@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Narrator",
+    "gender": "female",
+    "age": "middle aged",
+    "description": "A calm and reflective narrator who paints each moment with warmth and clarity."
+  },
+  {
+    "name": "Emma",
+    "gender": "female",
+    "age": "young",
+    "description": "Friendly, thoughtful, and a bit anxious, Emma hasn’t seen her old friend in years and wonders what’s changed."
+  },
+  {
+    "name": "Liam",
+    "gender": "male",
+    "age": "young",
+    "description": "Charming and calm, Liam is the kind of person who makes others feel at ease, even after a long time apart."
+  }
+]
+
+
+  

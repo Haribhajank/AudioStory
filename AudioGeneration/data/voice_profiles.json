@@ -1,0 +1,1343 @@
+{
+  "voices": [
+    {
+      "voiceId": "felix",
+      "displayName": "Felix",
+      "tags": {
+        "gender": "male",
+        "age": "middle aged",
+        "language": [
+          "english"
+        ],
+        "accent": "american",
+        "emotions": [],
+        "usecases": []
+      }
+    },
+    {
+      "voiceId": "zorin",
+      "displayName": "Zorin",
+      "tags": {
+        "gender": "male",
+        "age": "middle aged",
+        "language": [
+          "english"
+        ],
+        "accent": "american",
+        "emotions": [
+          "Friendly",
+          "Affectionate",
+          "Useful",
+          "Influential",
+          "Proud",
+          "Masterful",
+          "Capable",
+          "Kind",
+          "Powerful",
+          "Interested",
+          "Free",
+          "Happy",
+          "Strong",
+          "Dignified",
+          "Carefree",
+          "Admired",
+          "Hopeful",
+          "Elated",
+          "Lucky",
+          "Thankful"
+        ],
+        "usecases": [
+          "conversational",
+          "informative and educational"
+        ]
+      }
+    },
+    {
+      "voiceId": "alec",
+      "displayName": "Alec",
+      "tags": {
+        "gender": "male",
+        "age": "middle aged",
+        "language": [
+          "english"
+        ],
+        "accent": "canadian",
+        "emotions": [
+          "Concentrating",
+          "Dignified",
+          "Affectionate",
+          "Powerful",
+          "Alone with responsibility",
+          "Friendly",
+          "Masterful",
+          "Enraged",
+          "Hopeful",
+          "Cooperative",
+          "Elated",
+          "Controlling",
+          "Responsible",
+          "Contempt",
+          "Defiant",
+          "Cruel",
+          "Devoted",
+          "Hostile",
+          "Contemptuous",
+          "Capable",
+          "Angry",
+          "Strong",
+          "Kind",
+          "Scornful",
+          "Domineering",
+          "Useful",
+          "Influential",
+          "Hate",
+          "Suspicious"
+        ],
+        "usecases": [
+          "character and animation",
+          "informative and educational"
+        ]
+      }
+    },
+    {
+      "voiceId": "solomon",
+      "displayName": "Solomon",
+      "tags": {
+        "gender": "male",
+        "age": "middle aged",
+        "language": [
+          "english"
+        ],
+        "accent": "british",
+        "emotions": [
+          "Domineering",
+          "Defiant",
+          "Selfish",
+          "Alone with responsibility",
+          "Responsible",
+          "Disgusted",
+          "Egotistical",
+          "Enraged",
+          "Angry",
+          "Powerful",
+          "Serious",
+          "Insolent",
+          "Concentrating",
+          "Contemptuous",
+          "Aroused",
+          "Contempt",
+          "Scornful",
+          "Hate",
+          "Elated",
+          "Mighty"
+        ],
+        "usecases": [
+          "entertainment and tv",
+          "character and animation"
+        ]
+      }
+    },
+    {
+      "voiceId": "yash",
+      "displayName": "Yash",
+      "tags": {
+        "gender": "male",
+        "age": "middle aged",
+        "language": [
+          "hindi",
+          "english"
+        ],
+        "accent": "indian",
+        "emotions": [
+          "Selfish",
+          "Alone with responsibility",
+          "Enraged",
+          "Defiant",
+          "Angry",
+          "Contemptuous",
+          "Responsible",
+          "Domineering",
+          "Hostile",
+          "Cruel",
+          "Concentrating",
+          "Scornful",
+          "Disgusted",
+          "Hate",
+          "Contempt",
+          "Egotistical",
+          "Insolent",
+          "Serious",
+          "Aroused",
+          "Cooperative",
+          "Controlling",
+          "Elated"
+        ],
+        "usecases": [
+          "social media",
+          "character and animation"
+        ]
+      }
+    },
+    {
+      "voiceId": "irisha",
+      "displayName": "Irisha",
+      "tags": {
+        "gender": "female",
+        "age": "middle aged",
+        "language": [
+          "hindi",
+          "english"
+        ],
+        "accent": "indian",
+        "emotions": [
+          "Mighty",
+          "Bold",
+          "Strong",
+          "Powerful",
+          "Aggressive",
+          "Masterful",
+          "Egotistical",
+          "Responsible",
+          "Domineering",
+          "Concentrating",
+          "Alone with responsibility",
+          "Aroused",
+          "Vigorous",
+          "Hopeful"
+        ],
+        "usecases": [
+          "narrative story",
+          "informative and educational"
+        ]
+      }
+    },
+    {
+      "voiceId": "blofeld",
+      "displayName": "Blofeld",
+      "tags": {
+        "gender": "male",
+        "age": "middle aged",
+        "language": [
+          "english"
+        ],
+        "accent": "american",
+        "emotions": [
+          "Concentrating",
+          "Alone with responsibility",
+          "Powerful",
+          "Masterful",
+          "Responsible",
+          "Contempt",
+          "Defiant",
+          "Cooperative",
+          "Enraged",
+          "Domineering",
+          "Affectionate",
+          "Disgusted",
+          "Hostile",
+          "Dignified",
+          "Elated",
+          "Angry",
+          "Hopeful",
+          "Egotistical",
+          "Contemptuous",
+          "Strong",
+          "Mighty",
+          "Serious",
+          "Devoted",
+          "Scornful",
+          "Hate",
+          "Interested"
+        ],
+        "usecases": [
+          "narrative story",
+          "character and animation"
+        ]
+      }
+    },
+    {
+      "voiceId": "chirag",
+      "displayName": "Chirag",
+      "tags": {
+        "gender": "male",
+        "age": "middle aged",
+        "language": [
+          "hindi",
+          "english"
+        ],
+        "accent": "indian",
+        "emotions": [
+          "Strong",
+          "Interested",
+          "Mighty",
+          "Masterful",
+          "Powerful",
+          "Influential",
+          "Useful",
+          "Bold",
+          "Vigorous",
+          "Triumphant",
+          "Proud",
+          "Hopeful",
+          "Affectionate",
+          "Friendly"
+        ],
+        "usecases": [
+          "entertainment and tv",
+          "informative and educational"
+        ]
+      }
+    },
+    {
+      "voiceId": "luther",
+      "displayName": "Luther",
+      "tags": {
+        "gender": "female",
+        "age": "young",
+        "language": [
+          "english"
+        ],
+        "accent": "american",
+        "emotions": [
+          "Domineering",
+          "Egotistical",
+          "Arrogant",
+          "Aroused",
+          "Insolent",
+          "Mighty",
+          "Enraged"
+        ],
+        "usecases": [
+          "conversational"
+        ]
+      }
+    },
+    {
+      "voiceId": "julia",
+      "displayName": "Julia",
+      "tags": {
+        "gender": "female",
+        "age": "middle aged",
+        "language": [
+          "english"
+        ],
+        "accent": "british",
+        "emotions": [
+          "Concentrating",
+          "Dignified",
+          "Reprehensible",
+          "Alone with responsibility",
+          "Cooperative",
+          "Responsible",
+          "Enraged",
+          "Cruel",
+          "Contempt",
+          "Skeptical",
+          "Controlling",
+          "Defiant",
+          "Affectionate",
+          "Devoted",
+          "Hostile",
+          "Contemptuous",
+          "Powerful",
+          "Angry",
+          "Scornful",
+          "Suspicious",
+          "Masterful",
+          "Hate",
+          "Domineering",
+          "Serious"
+        ],
+        "usecases": [
+          "narrative story",
+          "informative and educational",
+          "character and animation"
+        ]
+      }
+    },
+    {
+      "voiceId": "erica",
+      "displayName": "Erica",
+      "tags": {
+        "gender": "female",
+        "age": "middle aged",
+        "language": [
+          "english"
+        ],
+        "accent": "canadian",
+        "emotions": [
+          "Strong",
+          "Powerful",
+          "Mighty",
+          "Responsible",
+          "Domineering",
+          "Alone with responsibility",
+          "Disgusted",
+          "Masterful",
+          "Defiant",
+          "Egotistical",
+          "Bold",
+          "Selfish",
+          "Concentrating",
+          "Aroused",
+          "Enraged",
+          "Aggressive",
+          "Contempt",
+          "Insolent",
+          "Hopeful"
+        ],
+        "usecases": [
+          "conversational",
+          "entertainment and tv"
+        ]
+      }
+    },
+    {
+      "voiceId": "nyah",
+      "displayName": "Nyah",
+      "tags": {
+        "gender": "female",
+        "age": "middle aged",
+        "language": [
+          "english"
+        ],
+        "accent": "australian",
+        "emotions": [
+          "Mighty",
+          "Strong",
+          "Bold",
+          "Powerful",
+          "Egotistical",
+          "Responsible",
+          "Domineering",
+          "Masterful",
+          "Alone with responsibility",
+          "Disgusted",
+          "Selfish",
+          "Concentrating",
+          "Aggressive",
+          "Aroused",
+          "Hopeful",
+          "Enraged"
+        ],
+        "usecases": [
+          "conversational",
+          "entertainment and tv"
+        ]
+      }
+    },
+    {
+      "voiceId": "william",
+      "displayName": "William",
+      "tags": {
+        "gender": "male",
+        "age": "middle aged",
+        "language": [
+          "english"
+        ],
+        "accent": "canadian",
+        "emotions": [
+          "Powerful",
+          "Masterful",
+          "Concentrating",
+          "Affectionate",
+          "Friendly",
+          "Alone with responsibility",
+          "Dignified",
+          "Hopeful",
+          "Strong",
+          "Elated",
+          "Responsible",
+          "Useful",
+          "Influential",
+          "Contempt",
+          "Defiant",
+          "Cooperative",
+          "Enraged",
+          "Domineering",
+          "Capable",
+          "Mighty",
+          "Interested",
+          "Kind",
+          "Disgusted",
+          "Hostile",
+          "Angry",
+          "Egotistical",
+          "Devoted",
+          "Contemptuous",
+          "Thankful"
+        ],
+        "usecases": [
+          "conversational",
+          "social media"
+        ]
+      }
+    },
+    {
+      "voiceId": "aditi",
+      "displayName": "Aditi",
+      "tags": {
+        "gender": "female",
+        "age": "young",
+        "language": [
+          "hindi",
+          "english"
+        ],
+        "accent": "indian",
+        "emotions": [
+          "Strong",
+          "Interested",
+          "Masterful",
+          "Powerful",
+          "Mighty",
+          "Useful",
+          "Vigorous",
+          "Influential",
+          "Triumphant",
+          "Proud",
+          "Bold",
+          "Affectionate",
+          "Friendly",
+          "Hopeful",
+          "Kind",
+          "Concentrating",
+          "Aggressive"
+        ],
+        "usecases": [
+          "conversational",
+          "entertainment and tv"
+        ]
+      }
+    },
+    {
+      "voiceId": "angela",
+      "displayName": "Angela",
+      "tags": {
+        "gender": "female",
+        "age": "young",
+        "language": [
+          "english"
+        ],
+        "accent": "british",
+        "emotions": [
+          "Powerful",
+          "Masterful",
+          "Concentrating",
+          "Elated",
+          "Affectionate",
+          "Friendly",
+          "Responsible",
+          "Alone with responsibility",
+          "Defiant",
+          "Domineering",
+          "Strong",
+          "Dignified",
+          "Disgusted",
+          "Contempt",
+          "Influential",
+          "Mighty",
+          "Hopeful",
+          "Hostile",
+          "Cooperative",
+          "Enraged",
+          "Interested",
+          "Irritated",
+          "Angry",
+          "Devoted",
+          "Egotistical",
+          "Contemptuous",
+          "Capable"
+        ],
+        "usecases": [
+          "conversational",
+          "narrative story"
+        ]
+      }
+    },
+    {
+      "voiceId": "radhika",
+      "displayName": "Radhika",
+      "tags": {
+        "gender": "female",
+        "age": "middle aged",
+        "language": [
+          "hindi",
+          "english"
+        ],
+        "accent": "indian",
+        "emotions": [
+          "Strong",
+          "Masterful",
+          "Powerful",
+          "Useful",
+          "Interested",
+          "Influential",
+          "Proud",
+          "Mighty",
+          "Affectionate",
+          "Vigorous",
+          "Friendly",
+          "Triumphant",
+          "Elated",
+          "Kind",
+          "Hopeful",
+          "Bold",
+          "Concentrating",
+          "Dignified",
+          "Domineering",
+          "Responsible",
+          "Alone with responsibility"
+        ],
+        "usecases": [
+          "narrative story",
+          "informative and educational"
+        ]
+      }
+    },
+    {
+      "voiceId": "chinmay",
+      "displayName": "Chinmay",
+      "tags": {
+        "gender": "male",
+        "age": "middle aged",
+        "language": [
+          "hindi",
+          "english"
+        ],
+        "accent": "indian",
+        "emotions": [
+          "Powerful",
+          "Masterful",
+          "Elated",
+          "Strong",
+          "Affectionate",
+          "Friendly",
+          "Concentrating",
+          "Useful",
+          "Influential",
+          "Domineering",
+          "Responsible",
+          "Alone with responsibility",
+          "Mighty",
+          "Disgusted",
+          "Interested",
+          "Defiant",
+          "Vigorous",
+          "Dignified",
+          "Triumphant",
+          "Hopeful",
+          "Contempt",
+          "Hostile",
+          "Enraged",
+          "Bold",
+          "Aggressive",
+          "Capable",
+          "Egotistical"
+        ],
+        "usecases": [
+          "narrative story",
+          "social media"
+        ]
+      }
+    },
+    {
+      "voiceId": "karan",
+      "displayName": "Karan",
+      "tags": {
+        "gender": "male",
+        "age": "middle aged",
+        "language": [
+          "hindi",
+          "english"
+        ],
+        "accent": "indian",
+        "emotions": [
+          "Powerful",
+          "Masterful",
+          "Concentrating",
+          "Elated",
+          "Strong",
+          "Mighty",
+          "Responsible",
+          "Domineering",
+          "Alone with responsibility",
+          "Affectionate",
+          "Defiant",
+          "Influential",
+          "Disgusted",
+          "Friendly",
+          "Interested",
+          "Hopeful",
+          "Contempt",
+          "Dignified",
+          "Vigorous",
+          "Hostile",
+          "Bold",
+          "Enraged",
+          "Egotistical",
+          "Triumphant",
+          "Aggressive",
+          "Angry"
+        ],
+        "usecases": [
+          "narrative story",
+          "informative and educational"
+        ]
+      }
+    },
+    {
+      "voiceId": "benji",
+      "displayName": "Benji",
+      "tags": {
+        "gender": "male",
+        "age": "middle aged",
+        "language": [
+          "english"
+        ],
+        "accent": "american",
+        "emotions": [
+          "Dignified",
+          "Reprehensible",
+          "Concentrating",
+          "Devoted",
+          "Skeptical",
+          "Cruel",
+          "Contempt",
+          "Controlling",
+          "Suspicious",
+          "Cooperative",
+          "Responsible",
+          "Contemptuous",
+          "Hostile",
+          "Scornful",
+          "Alone with responsibility",
+          "Enraged",
+          "Defiant",
+          "Hate",
+          "Affectionate",
+          "Angry",
+          "Powerful",
+          "Masterful"
+        ],
+        "usecases": [
+          "conversational",
+          "character and animation"
+        ]
+      }
+    },
+    {
+      "voiceId": "arnold",
+      "displayName": "Arnold",
+      "tags": {
+        "gender": "male",
+        "age": "middle aged",
+        "language": [
+          "english"
+        ],
+        "accent": "american",
+        "emotions": [
+          "Reprehensible",
+          "Selfish",
+          "Alone with responsibility",
+          "Skeptical",
+          "Concentrating",
+          "Responsible",
+          "Enraged",
+          "Cruel",
+          "Cooperative",
+          "Defiant",
+          "Suspicious",
+          "Dignified",
+          "Hostile",
+          "Contemptuous",
+          "Angry",
+          "Scornful",
+          "Contempt",
+          "Hate",
+          "Serious",
+          "Devoted",
+          "Domineering",
+          "Controlling",
+          "Egotistical"
+        ],
+        "usecases": [
+          "character and animation",
+          "social media"
+        ]
+      }
+    },
+    {
+      "voiceId": "ginny",
+      "displayName": "Ginny",
+      "tags": {
+        "gender": "female",
+        "age": "young",
+        "language": [
+          "english"
+        ],
+        "accent": "canadian",
+        "emotions": [
+          "Strong",
+          "Powerful",
+          "Masterful",
+          "Useful",
+          "Interested",
+          "Influential",
+          "Mighty",
+          "Affectionate",
+          "Vigorous",
+          "Friendly",
+          "Triumphant",
+          "Hopeful",
+          "Bold",
+          "Capable",
+          "Concentrating",
+          "Kind",
+          "Dignified",
+          "Domineering",
+          "Responsible",
+          "Alone with responsibility",
+          "Disgusted",
+          "Defiant"
+        ],
+        "usecases": [
+          "conversational",
+          "entertainment and tv"
+        ]
+      }
+    },
+    {
+      "voiceId": "albus",
+      "displayName": "Albus",
+      "tags": {
+        "gender": "male",
+        "age": "old",
+        "language": [
+          "hindi",
+          "english"
+        ],
+        "accent": "indian",
+        "emotions": [
+          "Masterful",
+          "Powerful",
+          "Affectionate",
+          "Friendly",
+          "Strong",
+          "Useful",
+          "Influential",
+          "Proud",
+          "Concentrating",
+          "Dignified",
+          "Interested",
+          "Elated",
+          "Alone with responsibility",
+          "Responsible",
+          "Defiant",
+          "Domineering",
+          "Hopeful",
+          "Mighty",
+          "Capable",
+          "Kind",
+          "Disgusted",
+          "Contempt",
+          "Cooperative",
+          "Hostile",
+          "Enraged"
+        ],
+        "usecases": [
+          "advertisement",
+          "informative and educational",
+          "character and animation"
+        ]
+      }
+    },
+    {
+      "voiceId": "lakshya",
+      "displayName": "Lakshya",
+      "tags": {
+        "gender": "male",
+        "age": "young",
+        "language": [
+          "hindi",
+          "english"
+        ],
+        "accent": "indian",
+        "emotions": [
+          "Masterful",
+          "Powerful",
+          "Strong",
+          "Useful",
+          "Interested",
+          "Influential",
+          "Affectionate",
+          "Mighty",
+          "Friendly",
+          "Elated",
+          "Vigorous",
+          "Triumphant",
+          "Concentrating",
+          "Dignified",
+          "Hopeful",
+          "Responsible",
+          "Domineering",
+          "Alone with responsibility",
+          "Disgusted",
+          "Bold",
+          "Capable",
+          "Defiant",
+          "Kind"
+        ],
+        "usecases": [
+          "conversational",
+          "entertainment and tv"
+        ]
+      }
+    },
+    {
+      "voiceId": "dhruv",
+      "displayName": "Dhruv",
+      "tags": {
+        "gender": "male",
+        "age": "young",
+        "language": [
+          "hindi",
+          "english"
+        ],
+        "accent": "indian",
+        "emotions": [
+          "Responsible",
+          "Domineering",
+          "Alone with responsibility",
+          "Concentrating",
+          "Defiant",
+          "Powerful",
+          "Disgusted",
+          "Selfish",
+          "Masterful",
+          "Contempt",
+          "Cooperative",
+          "Hostile",
+          "Enraged",
+          "Egotistical",
+          "Elated",
+          "Strong",
+          "Mighty",
+          "Angry",
+          "Affectionate",
+          "Aggressive",
+          "Contemptuous",
+          "Serious",
+          "Bold",
+          "Insolent",
+          "Hopeful",
+          "Aroused",
+          "Dignified",
+          "Vigorous"
+        ],
+        "usecases": [
+          "conversational",
+          "entertainment and tv"
+        ]
+      }
+    },
+    {
+      "voiceId": "bogambo",
+      "displayName": "Bogambo",
+      "tags": {
+        "gender": "male",
+        "age": "old",
+        "language": [
+          "african"
+        ],
+        "accent": "african",
+        "emotions": [
+          "Mighty",
+          "Bold",
+          "Strong",
+          "Interested",
+          "Powerful",
+          "Masterful",
+          "Influential",
+          "Hopeful",
+          "Useful",
+          "Vigorous",
+          "Triumphant",
+          "Egotistical",
+          "Aggressive"
+        ],
+        "usecases": [
+          "character and animation",
+          "entertainment and tv",
+          "social media"
+        ]
+      }
+    },
+    {
+      "voiceId": "natasha",
+      "displayName": "Natasha",
+      "tags": {
+        "gender": "female",
+        "age": "middle aged",
+        "language": [
+          "english"
+        ],
+        "accent": "american",
+        "emotions": [
+          "Bold",
+          "Strong",
+          "Powerful",
+          "Aggressive",
+          "Masterful"
+        ],
+        "usecases": [
+          "converstations"
+        ]
+      }
+    },
+    {
+      "voiceId": "christine",
+      "displayName": "Christine",
+      "tags": {
+        "gender": "female",
+        "age": "middle aged",
+        "language": [
+          "english"
+        ],
+        "accent": "american",
+        "emotions": [
+          "Cheerful",
+          "Positive"
+        ],
+        "usecases": [
+          "conversation"
+        ]
+      }
+    },
+    {
+      "voiceId": "malcolm",
+      "displayName": "Malcolm",
+      "tags": {
+        "gender": "male",
+        "age": "middle aged",
+        "language": [
+          "hindi",
+          "english"
+        ],
+        "accent": "american",
+        "emotions": [
+          "Happy",
+          "Cheerful"
+        ],
+        "usecases": [
+          "conversation",
+          "informative and educational"
+        ]
+      }
+    },
+    {
+      "voiceId": "ronald",
+      "displayName": "Ronald",
+      "tags": {
+        "gender": "male",
+        "age": "middle aged",
+        "language": [
+          "english"
+        ],
+        "accent": "indian",
+        "emotions": [
+          "Bold",
+          "Strong",
+          "Powerful"
+        ],
+        "usecases": [
+          "conversation",
+          "informative and educational"
+        ]
+      }
+    },
+    {
+      "voiceId": "andrea",
+      "displayName": "Andrea",
+      "tags": {
+        "gender": "female",
+        "age": "middle aged",
+        "language": [
+          "english"
+        ],
+        "accent": "american",
+        "emotions": [
+          "Strong",
+          "Powerful",
+          "Happy"
+        ],
+        "usecases": [
+          "conversation",
+          "informative and educational"
+        ]
+      }
+    },
+    {
+      "voiceId": "ilsa",
+      "displayName": "Ilsa",
+      "tags": {
+        "gender": "female",
+        "age": "young",
+        "language": [
+          "english"
+        ],
+        "accent": "american",
+        "emotions": [
+          "Powerful",
+          "Masterful",
+          "Affectionate",
+          "Strong",
+          "Friendly",
+          "Elated",
+          "Useful",
+          "Influential",
+          "Concentrating",
+          "Responsible",
+          "Domineering",
+          "Dignified",
+          "Interested",
+          "Alone with responsibility",
+          "Vigorous",
+          "Defiant",
+          "Mighty",
+          "Disgusted",
+          "Triumphant",
+          "Hopeful",
+          "Contempt",
+          "Cooperative",
+          "Hostile",
+          "Enraged",
+          "Capable",
+          "Kind",
+          "Bold"
+        ],
+        "usecases": [
+          "narrative story",
+          "conversational"
+        ]
+      }
+    },
+    {
+      "voiceId": "bellatrix",
+      "displayName": "Bellatrix",
+      "tags": {
+        "gender": "female",
+        "age": "middle aged",
+        "language": [
+          "english"
+        ],
+        "accent": "american",
+        "emotions": [
+          "Strong",
+          "Interested",
+          "Masterful",
+          "Powerful",
+          "Useful",
+          "Mighty",
+          "Influential",
+          "Vigorous",
+          "Triumphant",
+          "Proud",
+          "Bold",
+          "Affectionate",
+          "Friendly",
+          "Hopeful",
+          "Kind"
+        ],
+        "usecases": [
+          "conversational",
+          "social media"
+        ]
+      }
+    },
+    {
+      "voiceId": "lucius",
+      "displayName": "Lucius",
+      "tags": {
+        "gender": "male",
+        "age": "middle aged",
+        "language": [
+          "english"
+        ],
+        "accent": "american",
+        "emotions": [
+          "Alone with responsibility",
+          "Selfish",
+          "Concentrating",
+          "Enraged",
+          "Responsible",
+          "Defiant",
+          "Domineering",
+          "Cooperative",
+          "Disgusted",
+          "Contemptuous",
+          "Hostile",
+          "Contempt",
+          "Angry",
+          "Serious",
+          "Egotistical",
+          "Scornful",
+          "Powerful",
+          "Hate",
+          "Suspicious",
+          "Masterful",
+          "Dignified",
+          "Hopeful",
+          "Insolent",
+          "Elated"
+        ],
+        "usecases": [
+          "informative and educational",
+          "meditative"
+        ]
+      }
+    },
+    {
+      "voiceId": "nikita",
+      "displayName": "Nikita",
+      "tags": {
+        "gender": "female",
+        "age": "young",
+        "language": [
+          "hindi",
+          "english"
+        ],
+        "accent": "indian",
+        "emotions": [
+          "Strong",
+          "Interested",
+          "Mighty",
+          "Powerful",
+          "Masterful",
+          "Bold",
+          "Influential",
+          "Useful",
+          "Vigorous",
+          "Triumphant",
+          "Hopeful",
+          "Affectionate",
+          "Friendly",
+          "Aggressive"
+        ],
+        "usecases": [
+          "narrative story"
+        ]
+      }
+    },
+    {
+      "voiceId": "roma",
+      "displayName": "Roma",
+      "tags": {
+        "gender": "female",
+        "age": "young",
+        "language": [
+          "hindi",
+          "english"
+        ],
+        "accent": "indian",
+        "emotions": [
+          "Interested",
+          "Bold",
+          "Strong",
+          "Mighty",
+          "Vigorous",
+          "Influential",
+          "Triumphant",
+          "Masterful",
+          "Useful",
+          "Powerful",
+          "Admired",
+          "Proud",
+          "Happy"
+        ],
+        "usecases": [
+          "conversational",
+          "entertainment and tv"
+        ]
+      }
+    },
+    {
+      "voiceId": "kartik",
+      "displayName": "Kartik",
+      "tags": {
+        "gender": "male",
+        "age": "middle aged",
+        "language": [
+          "hindi",
+          "english"
+        ],
+        "accent": "indian",
+        "emotions": [
+          "Bold",
+          "Strong",
+          "Mighty",
+          "Interested",
+          "Vigorous",
+          "Powerful",
+          "Masterful",
+          "Influential",
+          "Triumphant",
+          "Useful",
+          "Aggressive"
+        ],
+        "usecases": [
+          "conversational",
+          "narrative story"
+        ]
+      }
+    },
+    {
+      "voiceId": "gargi",
+      "displayName": "Gargi",
+      "tags": {
+        "gender": "female",
+        "age": "young",
+        "language": [
+          "hindi",
+          "english"
+        ],
+        "accent": "indian",
+        "emotions": [
+          "Alone with responsibility",
+          "Responsible",
+          "Defiant",
+          "Concentrating",
+          "Selfish",
+          "Domineering",
+          "Disgusted",
+          "Powerful",
+          "Contempt",
+          "Hostile",
+          "Cooperative",
+          "Enraged",
+          "Masterful",
+          "Irritated",
+          "Angry",
+          "Egotistical",
+          "Affectionate",
+          "Elated",
+          "Contemptuous",
+          "Serious",
+          "Strong",
+          "Insolent",
+          "Mighty",
+          "Dignified",
+          "Scornful",
+          "Aroused",
+          "Hate",
+          "Hopeful",
+          "Bold"
+        ],
+        "usecases": [
+          "narrative story",
+          "informative and educational",
+          "meditative"
+        ]
+      }
+    }
+  ]
+}

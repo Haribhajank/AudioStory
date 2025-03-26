@@ -1,0 +1,5 @@
+langdetect
+indic-transliteration
+pydub
+requests
+openai
