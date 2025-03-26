@@ -4,6 +4,7 @@ from difflib import SequenceMatcher
 from typing import List, Dict
 from config import *
 from pydub import AudioSegment
+from dotenv import load_dotenv
 
 
 
@@ -13,8 +14,15 @@ from langdetect import detect
 from indic_transliteration import sanscript
 from indic_transliteration.sanscript import transliterate, ITRANS, DEVANAGARI
 from openai import OpenAI
-client = OpenAI(api_key=OPENAI_API_KEY)
-client_sai = Smallest(api_key=SMALLEST_API_KEY)
+
+load_dotenv()  # loads .env into environment variables
+
+openai_key = os.getenv("OPENAI_API_KEY")
+smallest_key = os.getenv("SMALLEST_API_KEY")
+
+
+client = OpenAI(api_key=openai_key)
+client_sai = Smallest(api_key=smallest_key)
 
 
 

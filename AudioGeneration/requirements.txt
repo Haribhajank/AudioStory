@@ -3,3 +3,5 @@ indic-transliteration
 pydub
 requests
 openai
+smallest
+python-dotenv
