@@ -3,21 +3,22 @@
     "name": "Narrator",
     "gender": "female",
     "age": "middle aged",
-    "description": "A calm and reflective narrator who paints each moment with warmth and clarity."
+    "accent": "indian",
+    "description": "A soft-spoken narrator with a poetic sense of time and memory."
   },
   {
-    "name": "Emma",
-    "gender": "female",
-    "age": "young",
-    "description": "Friendly, thoughtful, and a bit anxious, Emma hasn’t seen her old friend in years and wonders what’s changed."
-  },
-  {
-    "name": "Liam",
+    "name": "Rahul",
     "gender": "male",
     "age": "young",
-    "description": "Charming and calm, Liam is the kind of person who makes others feel at ease, even after a long time apart."
+    "accent": "indian",
+    "description": "Cheerful and youthful with a nostalgic, grounded voice."
+  },
+  {
+    "name": "Aarti",
+    "gender": "female",
+    "age": "young",
+    "accent": "indian",
+    "description": "Reflective and lively, Aarti brings emotional depth to the moment."
   }
 ]
 
-
-  
