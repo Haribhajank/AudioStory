@@ -1,0 +1,60 @@
+{
+  "characters": [
+    {
+      "name": "Aria",
+      "gender": "Female",
+      "age": 17,
+      "accent": "Neutral",
+      "description": "A determined and resourceful girl who has had her childhood memories taken away"
+    },
+    {
+      "name": "Elias",
+      "gender": "Male",
+      "age": 20,
+      "accent": "Broad",
+      "description": "A brooding memory trader sympathetic to Aria's cause"
+    },
+    {
+      "name": "Madam Vivance",
+      "gender": "Female",
+      "age": 45,
+      "accent": "High-Class",
+      "description": "A ruthless memory broker who controls the memory currency trade"
+    }
+  ],
+  "plot": "After venturing into the hidden memory market, Aria and Elias discover one of Aria's own childhood memories, only to have it snatched away by Madam Vivance's henchman, Henri. Outnumbered and with no other choice, they decide their only option is to confront Madam Vivance directly.",
+  "personas": [
+    {
+      "name": "Aria",
+      "personality traits": [
+        "Resilient",
+        "Resourceful",
+        "Stubborn",
+        "Brave"
+      ]
+    },
+    {
+      "name": "Elias",
+      "personality traits": [
+        "Brooding",
+        "Skeptical",
+        "Sympathetic",
+        "Protective"
+      ]
+    },
+    {
+      "name": "Madam Vivance",
+      "personality traits": [
+        "Ruthless",
+        "Greedy",
+        "Manipulative",
+        "Authoritative"
+      ]
+    }
+  ],
+  "recap": {
+    "episode 1": "Aria's childhood memories have been sold. Determined to retrieve them, she's joined by a memory trader named Elias, who offers his assistance. Their initial steps, however, alert Madam Vivance, a powerful figure in the memory trade business.",
+    "episode 2": "Aria and Elias venture into the city's murky underbelly, hoping to trace Aria's stolen memories in the black markets of memory trade. Meanwhile, Madam Vivance learns about Elias's assistance to Aria and sends her aide Henri to tail them. As Aria and Elias begin to understand the depth of the memory market, they remain ignorant of the danger tailing them.",
+    "episode 3": "In the hidden memory market, Aria and Elias find one of Aria's memories but are forced to abandon it when confronted by Madam Vivance's henchman, Henri. Realising they are outmatched, they decide to approach Madam Vivance directly."
+  }
+}
