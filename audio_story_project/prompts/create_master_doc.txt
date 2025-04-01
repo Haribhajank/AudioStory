@@ -1,9 +1,0 @@
-Given the idea: "{idea}" and total number of episodes: {num_episodes},
-generate a JSON master document with:
-- Characters (name, gender, age, accent, description)
-- Initial Plot (1-2 lines)
-- Personas (personality traits)
-- Recap (empty)
-
-Return the result strictly as raw JSON. Do not include any explanation or markdown.
-
