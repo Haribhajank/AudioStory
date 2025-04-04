@@ -1,2 +1,5 @@
 openai
 google-generativeai
+Pillow
+dotenv
+requests
