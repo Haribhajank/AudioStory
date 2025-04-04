@@ -1,6 +1,6 @@
 Given the idea: "{idea}" and total number of episodes: {num_episodes},
 generate a JSON master document with:
-- Characters (name, gender, age, accent, description)
+- Characters , include a suitable narrator (name (keep "Narrator" for narrator), gender, age, accent, description) keep the keys (name, gender etc in all small letters )
 - Initial Plot (1-2 lines)
 - Personas (personality traits)
 - Recap (empty)

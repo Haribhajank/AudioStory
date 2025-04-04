@@ -1,60 +1,49 @@
 {
   "characters": [
     {
-      "name": "Aria",
-      "gender": "Female",
-      "age": 17,
-      "accent": "Neutral",
-      "description": "A determined and resourceful girl who has had her childhood memories taken away"
-    },
-    {
-      "name": "Elias",
+      "name": "Narrator",
       "gender": "Male",
-      "age": 20,
-      "accent": "Broad",
-      "description": "A brooding memory trader sympathetic to Aria's cause"
+      "age": "50",
+      "accent": "British",
+      "description": "The all-knowing yet unseen storyteller who guides the audience through the story."
     },
     {
-      "name": "Madam Vivance",
+      "name": "Elion",
+      "gender": "Male",
+      "age": "5000",
+      "accent": "Neutral",
+      "description": "An ancient but eternally youthful deity with powerful hidden abilities and the protagonist of the story."
+    },
+    {
+      "name": "Iris",
       "gender": "Female",
-      "age": 45,
-      "accent": "High-Class",
-      "description": "A ruthless memory broker who controls the memory currency trade"
+      "age": "25",
+      "accent": "Neutral",
+      "description": "A mortal woman of exceptional beauty and grace, who captures Elion's heart despite being unaware of his divine nature."
     }
   ],
-  "plot": "After venturing into the hidden memory market, Aria and Elias discover one of Aria's own childhood memories, only to have it snatched away by Madam Vivance's henchman, Henri. Outnumbered and with no other choice, they decide their only option is to confront Madam Vivance directly.",
+  "plot": "Our story sets in a world similar to Earth, at a time far in the past. The protagonist, Elion, is an ancient deity with incredible power and wisdom, trapped in an eternally youthful form. He lives among humans to understand their world and appreciates their creation's beauty. Despite his wise and ancient essence, Elion fails to understand human emotions, a curiosity that finds a direction when he meets Iris. Iris is a mortal of exceptional grace and beauty who captures Elion's heart. As they spend more time together, Elion starts to comprehend the thrill of human companionship and the joy of a new day through Iris. Iris, unaware of Elion's deity nature, finds him intriguingly different. Elion cherishes their growing bond, finding himself increasingly sympathetic with human feelings and more confused about his own, wondering if what he feels could indeed be called love.",
   "personas": [
     {
-      "name": "Aria",
-      "personality traits": [
-        "Resilient",
-        "Resourceful",
-        "Stubborn",
-        "Brave"
+      "name": "Elion",
+      "personality_traits": [
+        "humble",
+        "patient",
+        "mysterious",
+        "protective",
+        "determined"
       ]
     },
     {
-      "name": "Elias",
-      "personality traits": [
-        "Brooding",
-        "Skeptical",
-        "Sympathetic",
-        "Protective"
-      ]
-    },
-    {
-      "name": "Madam Vivance",
-      "personality traits": [
-        "Ruthless",
-        "Greedy",
-        "Manipulative",
-        "Authoritative"
+      "name": "Iris",
+      "personality_traits": [
+        "innocent",
+        "kind",
+        "loving",
+        "intuitive",
+        "brave"
       ]
     }
   ],
-  "recap": {
-    "episode 1": "Aria's childhood memories have been sold. Determined to retrieve them, she's joined by a memory trader named Elias, who offers his assistance. Their initial steps, however, alert Madam Vivance, a powerful figure in the memory trade business.",
-    "episode 2": "Aria and Elias venture into the city's murky underbelly, hoping to trace Aria's stolen memories in the black markets of memory trade. Meanwhile, Madam Vivance learns about Elias's assistance to Aria and sends her aide Henri to tail them. As Aria and Elias begin to understand the depth of the memory market, they remain ignorant of the danger tailing them.",
-    "episode 3": "In the hidden memory market, Aria and Elias find one of Aria's memories but are forced to abandon it when confronted by Madam Vivance's henchman, Henri. Realising they are outmatched, they decide to approach Madam Vivance directly."
-  }
+  "recap": "In a world and time not quite our own, the ancient deity Elion, disguised in a youthful form, finds the mortal beauty Iris. Iris, unaware of Elion's true nature, befriends him. Elion further explores his empathy for human emotions, finding solace in Iris's company. The mundane experiences of a human morning spark joy in the deity, an emotion new to him. Meanwhile, his complex feelings for Iris deepen, leaving him in a state of bafflement and intrigue, exploring the unchartered territories of what appears to be love."
 }

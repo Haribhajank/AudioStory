@@ -1,6 +1,7 @@
 import os
 import json
 import logging
+import shutil
 from pathlib import Path
 from difflib import SequenceMatcher
 from typing import List, Dict
@@ -31,6 +32,27 @@ LANG_MAP = {
     "hi": "hindi"
 }
 
+
+
+def clear_directory(directory: Path):
+    if directory.exists():
+        for item in directory.iterdir():
+            if item.is_dir():
+                shutil.rmtree(item)
+            else:
+                item.unlink()
+
+
+def parse_inline_script(lines: List[str]) -> List[Dict[str, str]]:
+    parsed_script = []
+    for line in lines:
+        if ":" in line:
+            speaker, text = line.split(":", 1)
+            parsed_script.append({
+                "speaker": speaker.strip(),
+                "text": text.strip()
+            })
+    return parsed_script
 
 def smart_transliterate(text: str, is_hindi_voice: bool) -> str:
     try:
@@ -140,14 +162,11 @@ def build_voice_map_per_character(characters: List[Dict], voices: Dict, script: 
     return char_voice_map
 
 
-def process_script(script_path: str, char_voice_map: Dict[str, str], chunk_dir: str) -> List[str]:
-    with open(script_path, encoding="utf-8") as f:
-        script = json.load(f)
+def process_script(script: List[Dict], char_voice_map: Dict[str, str], voices: Dict, chunk_dir: str) -> List[str]:
     os.makedirs(chunk_dir, exist_ok=True)
     audio_files = []
 
-    with open("data/voice_profiles.json", encoding="utf-8") as f:
-        voice_data = json.load(f)
+    voice_data = voices  # Already loaded externally
 
     for i, line in enumerate(script):
         speaker = line["speaker"]
@@ -169,6 +188,7 @@ def process_script(script_path: str, char_voice_map: Dict[str, str], chunk_dir: 
     return audio_files
 
 
+
 def merge_chunks(audio_files: List[str], output_path: str):
     final_audio = AudioSegment.empty()
     valid_files = [f for f in audio_files if os.path.exists(f)]
@@ -184,16 +204,49 @@ def merge_chunks(audio_files: List[str], output_path: str):
 
 
 def run_pipeline():
-    with open("data/master_doc.json", encoding="utf-8") as f:
-        characters = json.load(f)
+    external_master_doc_path = Path(__file__).parent.parent / "audio_story_project" / "data" / "master_doc.json"
+    with open(external_master_doc_path, encoding="utf-8") as f:
+        master_doc = json.load(f)
+        characters = master_doc.get("characters", [])
+
+    # Load voices
     with open("data/voice_profiles.json", encoding="utf-8") as f:
         voices = json.load(f)
-    with open("data/script.json", encoding="utf-8") as f:
-        script = json.load(f)
 
-    char_voice_map = build_voice_map_per_character(characters, voices, script)
-    audio_files = process_script("data/script.json", char_voice_map, CHUNK_DIR)
-    merge_chunks(audio_files, FINAL_AUDIO_PATH)
+    # External script location
+    external_script_dir = Path(__file__).parent.parent / "audio_story_project" / "data" / "episodes"
+
+    # Setup paths
+    output_dir = Path("output")
+    chunk_root = Path("audio_chunks")
+    clear_directory(output_dir)
+    clear_directory(chunk_root)
+    output_dir.mkdir(exist_ok=True)
+    chunk_root.mkdir(exist_ok=True)
+
+    # Process each episode script
+    for script_file in sorted(external_script_dir.glob("episode*")):
+        episode_name = script_file.stem  # "episode1_audio_script"
+        print(f"\n📢 Processing {episode_name}...")
+
+        with open(script_file, encoding="utf-8") as f:
+            raw_script = json.load(f)
+            if isinstance(raw_script, list) and isinstance(raw_script[0], str):
+                script = parse_inline_script(raw_script)
+            else:
+                script = raw_script
+
+        # Build voice map for this episode
+        char_voice_map = build_voice_map_per_character(characters, voices, script)
+
+        episode_chunk_dir = chunk_root / episode_name
+        episode_output_path = output_dir / f"{episode_name}.wav"
+
+        # 🔁 Updated to pass `script` and `voices` directly
+        audio_files = process_script(script, char_voice_map, voices, str(episode_chunk_dir))
+        merge_chunks(audio_files, str(episode_output_path))
+
+
 
 
 if __name__ == "__main__":

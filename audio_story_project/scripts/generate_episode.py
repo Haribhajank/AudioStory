@@ -43,6 +43,7 @@ from scripts.utils import load_json, save_json
 load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
+
 def generate_episode(ep_num):
     master = load_json("data/master_doc.json")
 

@@ -1,26 +1,3 @@
-# import openai, os
-# from dotenv import load_dotenv
-# from scripts.utils import save_json
-# load_dotenv()
-
-# openai.api_key = os.getenv("OPENAI_API_KEY")
-
-# def create_master_doc(idea, num_episodes):
-#     with open("prompts/create_master_doc.txt") as f:
-#         template = f.read()
-#     prompt = template.format(idea=idea, num_episodes=num_episodes)
-
-#     res = openai.ChatCompletion.create(
-#         model="gpt-4",
-#         messages=[{"role": "user", "content": prompt}]
-#     )
-#     master_doc = eval(res.choices[0].message.content)
-#     save_json(master_doc, "data/master_doc.json")
-#     print("Master doc generated!")
-
-# # Example usage
-# # create_master_doc("time-traveling auto rickshaw", 5)
-# ✅ Updated for openai >= 1.0.0
 import openai
 from openai import OpenAI
 import os
