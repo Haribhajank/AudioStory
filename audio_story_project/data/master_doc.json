@@ -1,49 +1,53 @@
 {
   "characters": [
     {
-      "name": "Narrator",
-      "gender": "Male",
-      "age": "50",
-      "accent": "British",
-      "description": "The all-knowing yet unseen storyteller who guides the audience through the story."
+      "name": "savita",
+      "gender": "female",
+      "age": "30",
+      "accent": "indian",
+      "description": "A confident and attractive woman who navigates her life with charm and wit."
     },
     {
-      "name": "Elion",
-      "gender": "Male",
-      "age": "5000",
-      "accent": "Neutral",
-      "description": "An ancient but eternally youthful deity with powerful hidden abilities and the protagonist of the story."
+      "name": "rajesh",
+      "gender": "male",
+      "age": "32",
+      "accent": "indian",
+      "description": "Savita's husband, supportive yet often oblivious to the humorous situations they find themselves in."
     },
     {
-      "name": "Iris",
-      "gender": "Female",
-      "age": "25",
-      "accent": "Neutral",
-      "description": "A mortal woman of exceptional beauty and grace, who captures Elion's heart despite being unaware of his divine nature."
+      "name": "neha",
+      "gender": "female",
+      "age": "28",
+      "accent": "indian",
+      "description": "Savita's best friend, a lively character who adds to the fun with her playful nature."
     }
   ],
-  "plot": "Our story sets in a world similar to Earth, at a time far in the past. The protagonist, Elion, is an ancient deity with incredible power and wisdom, trapped in an eternally youthful form. He lives among humans to understand their world and appreciates their creation's beauty. Despite his wise and ancient essence, Elion fails to understand human emotions, a curiosity that finds a direction when he meets Iris. Iris is a mortal of exceptional grace and beauty who captures Elion's heart. As they spend more time together, Elion starts to comprehend the thrill of human companionship and the joy of a new day through Iris. Iris, unaware of Elion's deity nature, finds him intriguingly different. Elion cherishes their growing bond, finding himself increasingly sympathetic with human feelings and more confused about his own, wondering if what he feels could indeed be called love.",
+  "plot": "Savita Bhabhi explores the adventurous and humorous life of Savita, a capable housewife, as she encounters various hilarious situations while dealing with her family and friends. Her charm, whit, and problem-solving ability add to the comical situations she finds herself in, making even a normal day an adventure. From assisting her best friend Neha in landing a job, to helping her prepare a presentation at work, to regular household situations, Savita manages everything with ease, wit and a lot of fun.",
   "personas": [
     {
-      "name": "Elion",
+      "name": "savita",
       "personality_traits": [
-        "humble",
-        "patient",
-        "mysterious",
-        "protective",
-        "determined"
+        "charming",
+        "confident",
+        "adventurous"
       ]
     },
     {
-      "name": "Iris",
+      "name": "rajesh",
       "personality_traits": [
-        "innocent",
-        "kind",
-        "loving",
-        "intuitive",
-        "brave"
+        "supportive",
+        "oblivious",
+        "humorous"
+      ]
+    },
+    {
+      "name": "neha",
+      "personality_traits": [
+        "playful",
+        "fun-loving",
+        "spontaneous"
       ]
     }
   ],
-  "recap": "In a world and time not quite our own, the ancient deity Elion, disguised in a youthful form, finds the mortal beauty Iris. Iris, unaware of Elion's true nature, befriends him. Elion further explores his empathy for human emotions, finding solace in Iris's company. The mundane experiences of a human morning spark joy in the deity, an emotion new to him. Meanwhile, his complex feelings for Iris deepen, leaving him in a state of bafflement and intrigue, exploring the unchartered territories of what appears to be love."
+  "recap": "In the third episode, Neha finds herself in a difficult situation as she has to prepare for an important presentation at work. She immediately seeks Savita's help, who rushes to assist her best friend. With her quick wit and innovative ideas, Savita helps Neha prepare for the presentation, turning the stressful event into an enjoyable preparation process. In the end, Neha is prepared and confident, thanks to Savita's calming and effective guidance. Rajesh, obliviously supportive as always, appreciates Savita's efforts in making another day an adventure filled with laughter, wit and joy."
 }

@@ -1,9 +1,32 @@
-Given the idea: "{idea}" and total number of episodes: {num_episodes},
-generate a JSON master document with:
-- Characters , include a suitable narrator (name (keep "Narrator" for narrator), gender, age, accent, description) keep the keys (name, gender etc in all small letters )
-- Initial Plot (1-2 lines)
-- Personas (personality traits)
-- Recap (empty)
+Given the idea: "{idea}" and total number of episodes: {num_episodes}, generate a master document in strict JSON format.
 
-Return the result strictly as raw JSON. Do not include any explanation or markdown.
+The JSON must follow **exactly** this structure:
+
+{{
+  "Characters": [
+    {{
+      "name": "string (all lowercase)",
+      "gender": "string (all lowercase)",
+      "age": "string (can be number or descriptive)",
+      "accent": "string (all lowercase or 'n/a')",
+      "description": "string"
+    }},
+    ...
+  ],
+  "Initial Plot": "string (1–2 lines summary of the story)",
+  "Personas": [
+    {{
+      "name": "string (must match a character name)",
+      "personality_traits": ["string", "string", ...]
+    }},
+    ...
+  ],
+  "Recap": {{}}
+}}
+
+STRICT RULES:
+- Return **only raw JSON**. No explanation, no markdown, no formatting symbols.
+- Keys must **match exactly** as shown above (e.g., "Initial Plot", not initialPlot).
+- All key names inside objects (like name, age) must be lowercase.
+- Do not include markdown (e.g., do NOT wrap the response in ```json or ```).
 

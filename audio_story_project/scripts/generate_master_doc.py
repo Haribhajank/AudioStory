@@ -3,9 +3,15 @@ from openai import OpenAI
 import os
 import json
 from dotenv import load_dotenv
-from scripts.utils import save_json
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
+from utils import save_json
 
 load_dotenv()
+
+
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 def normalize_master_doc(doc):
     return {
@@ -19,18 +25,32 @@ def normalize_master_doc(doc):
 
 
 def create_master_doc(idea, num_episodes):
-    with open("prompts/create_master_doc.txt") as f:
+    prompt_path = os.path.join(os.path.dirname(__file__), "../prompts/create_master_doc.txt")
+    with open(os.path.abspath(prompt_path)) as f:
         template = f.read()
     prompt = template.format(idea=idea, num_episodes=num_episodes)
+    print(" Using OpenAI key:", os.getenv("OPENAI_API_KEY"))
 
-    res = client.chat.completions.create(
-        model="gpt-4",
-        messages=[{"role": "user", "content": prompt}]
-    )
+    try:
+        res = client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[{"role": "user", "content": prompt}]
+        )
+    except Exception as e:
+        print(" LLM request failed:")
+        print(e)
+        return  # Exit early so save doesn't happen
+    
+    if not res.choices or not res.choices[0].message.content:
+        print(" No content returned from LLM.")
+        return
+
+
 
     # Inside create_master_doc function (after res = ...)
+    response_text = res.choices[0].message.content.strip()
     print("\n--- LLM RAW RESPONSE ---\n")
-    print(res.choices[0].message.content)
+    print(response_text)
 
     master_doc = eval(res.choices[0].message.content)
     response_text = res.choices[0].message.content
@@ -43,8 +63,44 @@ def create_master_doc(idea, num_episodes):
         master_doc = json.loads(response_text)
         master_doc = normalize_master_doc(master_doc)
     except json.JSONDecodeError as e:
-        print("❌ JSON decoding failed:")
+        print(" JSON decoding failed:")
         print(response_text)
         raise e
-    save_json(master_doc, "data/master_doc.json")
+    
+    print("\n--- Final Normalized Master Doc ---\n")
+    print(json.dumps(master_doc, indent=2))
+
+    save_path = os.path.join(os.path.dirname(__file__), "../data/master_doc.json")
+    print("Saving master doc to:", save_path)
+
+    save_json(master_doc, save_path)
+    print(" Master doc written to file.")
+
+    save_json(master_doc, os.path.join(os.path.dirname(__file__), "../data/master_doc.json"))
+
     print("Master doc generated!")
+
+# def create_master_doc(idea, num_episodes):
+#     print("🐍 Python executable:", sys.executable)
+#     print("📁 Working directory:", os.getcwd())
+
+#     import openai
+#     print("✅ OpenAI version:", openai.__version__)
+    
+#     try:
+#         response = client.chat.completions.create(
+#             model="gpt-4",
+#             messages=[{"role": "user", "content": f"Hello from: {idea}"}]
+#         )
+#         print("✅ GPT responded:")
+#         print(response.choices[0].message.content)
+#     except Exception as e:
+#         print("❌ OpenAI request failed!")
+#         print(e)
+
+
+
+if __name__ == "__main__":
+    idea = sys.argv[1]
+    print(f" CLI triggered with idea: {idea}")
+    create_master_doc(idea, num_episodes=3)
