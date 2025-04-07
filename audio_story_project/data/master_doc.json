@@ -1,53 +1,21 @@
 {
   "characters": [
     {
-      "name": "savita",
-      "gender": "female",
-      "age": "30",
-      "accent": "indian",
-      "description": "A confident and attractive woman who navigates her life with charm and wit."
+      "name": "Luna",
+      "role": "Protagonist"
     },
     {
-      "name": "rajesh",
-      "gender": "male",
-      "age": "32",
-      "accent": "indian",
-      "description": "Savita's husband, supportive yet often oblivious to the humorous situations they find themselves in."
-    },
-    {
-      "name": "neha",
-      "gender": "female",
-      "age": "28",
-      "accent": "indian",
-      "description": "Savita's best friend, a lively character who adds to the fun with her playful nature."
+      "name": "Arlo",
+      "role": "Sidekick"
     }
   ],
-  "plot": "Savita Bhabhi explores the adventurous and humorous life of Savita, a capable housewife, as she encounters various hilarious situations while dealing with her family and friends. Her charm, whit, and problem-solving ability add to the comical situations she finds herself in, making even a normal day an adventure. From assisting her best friend Neha in landing a job, to helping her prepare a presentation at work, to regular household situations, Savita manages everything with ease, wit and a lot of fun.",
-  "personas": [
-    {
-      "name": "savita",
-      "personality_traits": [
-        "charming",
-        "confident",
-        "adventurous"
-      ]
-    },
-    {
-      "name": "rajesh",
-      "personality_traits": [
-        "supportive",
-        "oblivious",
-        "humorous"
-      ]
-    },
-    {
-      "name": "neha",
-      "personality_traits": [
-        "playful",
-        "fun-loving",
-        "spontaneous"
-      ]
-    }
-  ],
-  "recap": "In the third episode, Neha finds herself in a difficult situation as she has to prepare for an important presentation at work. She immediately seeks Savita's help, who rushes to assist her best friend. With her quick wit and innovative ideas, Savita helps Neha prepare for the presentation, turning the stressful event into an enjoyable preparation process. In the end, Neha is prepared and confident, thanks to Savita's calming and effective guidance. Rajesh, obliviously supportive as always, appreciates Savita's efforts in making another day an adventure filled with laughter, wit and joy."
+  "plot": "In a distant future, Luna discovers a portal to an ancient world where she must stop a time-warping catastrophe.",
+  "personas": {
+    "Luna": "Bold and curious with a knack for solving ancient mysteries.",
+    "Arlo": "Quirky AI assistant who communicates only in riddles."
+  },
+  "recap": {
+    "Episode 1": "Luna stumbles upon the portal and is transported to a new world.",
+    "Episode 2": "She learns about the impending disaster and begins her quest."
+  }
 }

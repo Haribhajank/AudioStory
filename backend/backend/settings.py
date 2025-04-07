@@ -18,13 +18,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 STATIC_URL = '/static/'
 
-MEDIA_URL = '/media/thumbnails/'
-MEDIA_ROOT = os.path.join(BASE_DIR, '../thumnail_generation/output/thumbnails')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR.parent / 'thumnail_generation/output'
 
 
 # For audio (if separate)
-AUDIO_URL = '/media/audio/'
-AUDIO_ROOT = os.path.join(BASE_DIR, '../AudioGeneration/output')
+AUDIO_URL = '/audio/'  # ✅ not /media/audio/
+AUDIO_ROOT = Path(BASE_DIR.parent) / 'AudioGeneration' / 'output'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -61,6 +61,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
@@ -137,3 +141,25 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '[{asctime}] {levelname} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose'
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'DEBUG',
+    },
+}

@@ -13,7 +13,7 @@ The JSON must follow **exactly** this structure:
     }},
     ...
   ],
-  "Initial Plot": "string (1–2 lines summary of the story)",
+  "Initial Plot": "string (Detailed plot with episodic division)",
   "Personas": [
     {{
       "name": "string (must match a character name)",

@@ -27,4 +27,5 @@ urlpatterns = [
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 urlpatterns += static(settings.AUDIO_URL, document_root=settings.AUDIO_ROOT)

@@ -31,41 +31,64 @@ def create_master_doc(idea, num_episodes):
     prompt = template.format(idea=idea, num_episodes=num_episodes)
     print(" Using OpenAI key:", os.getenv("OPENAI_API_KEY"))
 
-    try:
-        res = client.chat.completions.create(
-            model="gpt-4o-mini",
-            messages=[{"role": "user", "content": prompt}]
-        )
-    except Exception as e:
-        print(" LLM request failed:")
-        print(e)
-        return  # Exit early so save doesn't happen
+    # try:
+    #     res = client.chat.completions.create(
+    #         model="gpt-4o-mini",
+    #         messages=[{"role": "user", "content": prompt}]
+    #     )
+    # except Exception as e:
+    #     print(" LLM request failed:")
+    #     print(e)
+    #     return  # Exit early so save doesn't happen
+
+
     
-    if not res.choices or not res.choices[0].message.content:
-        print(" No content returned from LLM.")
-        return
+    # if not res.choices or not res.choices[0].message.content:
+    #     print(" No content returned from LLM.")
+    #     return
 
 
 
     # Inside create_master_doc function (after res = ...)
-    response_text = res.choices[0].message.content.strip()
-    print("\n--- LLM RAW RESPONSE ---\n")
-    print(response_text)
+    # response_text = res.choices[0].message.content.strip()
+    # print("\n--- LLM RAW RESPONSE ---\n")
+    # print(response_text)
 
-    master_doc = eval(res.choices[0].message.content)
-    response_text = res.choices[0].message.content
+    # master_doc = eval(res.choices[0].message.content)
+    # response_text = res.choices[0].message.content
 
-    # Handle markdown-wrapped responses
-    if "```" in response_text:
-        response_text = response_text.split("```")[1].replace("json", "").strip()
+    # # Handle markdown-wrapped responses
+    # if "```" in response_text:
+    #     response_text = response_text.split("```")[1].replace("json", "").strip()
 
-    try:
-        master_doc = json.loads(response_text)
-        master_doc = normalize_master_doc(master_doc)
-    except json.JSONDecodeError as e:
-        print(" JSON decoding failed:")
-        print(response_text)
-        raise e
+    # try:
+    #     master_doc = json.loads(response_text)
+
+
+        # ✅ Dummy response for frontend development
+    dummy_master_doc = {
+        "characters": [
+            {"name": "Luna", "role": "Protagonist"},
+            {"name": "Arlo", "role": "Sidekick"}
+        ],
+        "plot": "In a distant future, Luna discovers a portal to an ancient world where she must stop a time-warping catastrophe.",
+        "personas": {
+            "Luna": "Bold and curious with a knack for solving ancient mysteries.",
+            "Arlo": "Quirky AI assistant who communicates only in riddles."
+        },
+        "recap": {
+            "Episode 1": "Luna stumbles upon the portal and is transported to a new world.",
+            "Episode 2": "She learns about the impending disaster and begins her quest."
+        }
+    }
+
+    master_doc = normalize_master_doc(dummy_master_doc)
+    
+    #     master_doc = normalize_master_doc(master_doc)
+    # except json.JSONDecodeError as e:
+    #     print(" JSON decoding failed:")
+    #     print(response_text)
+    #     raise e
     
     print("\n--- Final Normalized Master Doc ---\n")
     print(json.dumps(master_doc, indent=2))
@@ -103,4 +126,4 @@ def create_master_doc(idea, num_episodes):
 if __name__ == "__main__":
     idea = sys.argv[1]
     print(f" CLI triggered with idea: {idea}")
-    create_master_doc(idea, num_episodes=3)
+    create_master_doc(idea, num_episodes=2)
