@@ -78,7 +78,7 @@ def generate_audio_chunk(text: str, voice_id: str, emotion: str, file_path: str)
 def infer_emotion(text: str) -> str:
     try:
         response = client.chat.completions.create(
-            model="gpt-3.5-turbo",
+            model="gpt-4o-mini",
             messages=[{
                 "role": "user",
                 "content": f'What is the primary emotion in: "{text}"? Respond with one word.'
@@ -108,17 +108,17 @@ def score_voice_for_character(character: Dict, detected_language: str, voice: Di
     else:
         score -= 5
 
-    if tags.get("gender", "").lower() == character.get("gender", "").lower():
+    if tags.get("gender", "").lower() == character.get("Gender", "").lower():
         score += 2
-    if tags.get("age", "").lower() == character.get("age", "").lower():
+    if tags.get("age", "").lower() == character.get("Age", "").lower():
         score += 1
 
-    if character.get("accent") and tags.get("accent", "").lower() == character["accent"].lower():
+    if character.get("Accent") and tags.get("accent", "").lower() == character["Accent"].lower():
         score += 3
     else:
         score -= 1
 
-    description = character.get("description", "").lower()
+    description = character.get("Description", "").lower()
     keyword_weights = {
         "hopeful": 1, "friendly": 1, "calm": 1, "kind": 1, "emotional": 1,
         "funny": 1, "strong": 1, "influential": 1, "powerful": 1
@@ -135,12 +135,12 @@ def score_voice_for_character(character: Dict, detected_language: str, voice: Di
 def build_voice_map_per_character(characters: List[Dict], voices: Dict, script: List[Dict]) -> Dict[str, str]:
     char_voice_map = {}
     for char in characters:
-        name = char["name"]
+        name = char["Name"]
         lang = detect_character_language(name, script)
         scored = [(v["voiceId"], score_voice_for_character(char, lang, v)) for v in voices["voices"]]
         best_voice, best_score = max(scored, key=lambda x: x[1])
         char_voice_map[name] = best_voice
-        logging.info(f" '{name}' matched with '{best_voice}' (lang: {lang}, accent: {char.get('accent', 'n/a')}, score: {best_score})")
+        logging.info(f" '{name}' matched with '{best_voice}' (lang: {lang}, accent: {char.get('Accent', 'n/a')}, score: {best_score})")
     return char_voice_map
 
 def process_script(script: List[Dict], char_voice_map: Dict[str, str], voices: Dict, chunk_dir: Path) -> List[str]:

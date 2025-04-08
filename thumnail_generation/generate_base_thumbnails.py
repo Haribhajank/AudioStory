@@ -27,7 +27,7 @@ def story_prompts(system_prompt, user_prompt, model="gpt-4o"):
         {"role": "developer", "content": system_prompt},
         {"role": "user", "content": user_prompt}
     ]
-    completion = client.chat.completions.create(model=model, messages=messages)
+    completion = client.chat.completions.create(model=model, messages=messages, temperature=0.2)
     return completion.choices[0].message.content
 
 def save_thumbnail(image_data, filename):
@@ -41,8 +41,8 @@ def save_thumbnail(image_data, filename):
 
 def generate_base_thumbnails():
     # Load master_doc
-    with open(config.MASTER_DOC_PATH, 'r', encoding='utf-8') as file:
-        master_doc_content = file.read()
+    with open(config.MASTER_DOC_PATH, 'r') as file:
+        master_doc_content = json.load(file)
 
     # Compose prompt
     system_prompt = prompts.system_prompt
@@ -97,3 +97,4 @@ def generate_base_thumbnails():
 
 if __name__ == "__main__":
     generate_base_thumbnails()
+    

@@ -37,12 +37,15 @@
 # ✅ Updated for openai >= 1.0.0
 
 
-################################################################################################
+###############################################################################################
 
 # from openai import OpenAI
 # import sys
 # import os
+# import json
 # from dotenv import load_dotenv
+# from prompts.generate_episode import episode_system_prompt,episode_user_prompt
+# from prompts.generate_recap import recap_system_prompt,recap_user_prompt
 
 # sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
@@ -62,21 +65,15 @@
 
 #     master = load_json(master_path)
 
-#     prompt_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../prompts/generate_episode.txt"))
-#     with open(prompt_path) as f:
-#         prompt_template = f.read()
-
-#     prompt = prompt_template.format(
-#         characters=master["characters"],
-#         plot=master["plot"],
-#         recap=master["recap"],
-#         episode_num=ep_num
-#     )
-
+#     messages = [
+#         {"role": "developer", "content": episode_system_prompt},
+#         {"role": "user", "content": episode_user_prompt %(master,ep_num,ep_num)}
+#       ]
+    
 #     res = client.chat.completions.create(
-#         model="gpt-4",
-#         messages=[{"role": "user", "content": prompt}]
-#     )
+#             model="o1",
+#             messages=messages,
+#         )
 
 #     response = res.choices[0].message.content
 #     print(f"\n LLM Response for Episode {ep_num}:\n", response)
@@ -86,23 +83,41 @@
 #     except Exception as e:
 #         print(" Failed to parse LLM output:", e)
 #         return
+    
 
-#     episode_script = output.get("episode")
-#     updated_plot = output.get("plot")
-#     updated_recap = output.get("recap")
-
-#     if not episode_script:
-#         print(" No 'episode' key in response!")
-#         return
-
-#     # Update master doc
-#     master["plot"] = updated_plot or master["plot"]
-#     master["recap"] = updated_recap or master["recap"]
-#     save_json(master, master_path)
-
+    
+#     episode_script = output
 #     # Save episode to JSON
 #     save_json(episode_script, episodes_path)
 #     print(f" Episode {ep_num} saved to:", episodes_path)
+
+#     ##Generating recap for this episode
+#     messages = [
+#         {"role": "developer", "content": recap_system_prompt},
+#         {"role": "user", "content": recap_user_prompt %(episode_script)}
+#       ]
+    
+#     res = client.chat.completions.create(
+#             model="o1",
+#             messages=messages,
+#         )
+
+#     response = res.choices[0].message.content
+#     print(f"\n LLM Response for Recap {ep_num}:\n", response)
+
+#     if "```" in response:
+#         response = response.split("```")[1].replace("json", "").strip()
+    
+#     response_json = json.loads(response)
+#     episode_recap = response_json["episode_recap_summary"]
+#     master["recap"] = episode_recap
+#     save_json(master, master_path)
+#     print(f"\n Master doc updated with recap of {ep_num}")
+
+    
+
+
+
 
 
 
@@ -125,6 +140,7 @@ from openai import OpenAI
 import sys
 import os
 from dotenv import load_dotenv
+
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
