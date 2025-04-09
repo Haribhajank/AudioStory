@@ -8,6 +8,7 @@ from difflib import SequenceMatcher
 from typing import List, Dict
 from pydub import AudioSegment
 from dotenv import load_dotenv
+import time
 
 from smallest import Smallest
 from langdetect import detect
@@ -214,12 +215,14 @@ def run_pipeline():
     
     # Load master doc for characters
     master_doc_path = Path(__file__).parent.parent / "audio_story_project/data/master_doc.json"
-    with open(master_doc_path, encoding="utf-8") as f:
+    with open(master_doc_path) as f:
         master_doc = json.load(f)
     characters = master_doc["characters"]
 
     with open(PROFILE_PATH, encoding="utf-8") as f:
         voices = json.load(f)
+
+    time.sleep(30)
 
     # Prepare directories
     episode_name = input_path.stem

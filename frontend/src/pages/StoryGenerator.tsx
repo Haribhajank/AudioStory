@@ -165,7 +165,7 @@ export default function StoryGenerator() {
   }, []);
 
   return (
-    <div className="relative w-screen h-screen overflow-hidden">
+    <div className="relative min-h-screen w-screen overflow-y-auto bg-black">
       {/* 🌄 Fullscreen Background */}
       <div
         className="fixed inset-0 bg-cover bg-center z-0"
@@ -212,7 +212,15 @@ export default function StoryGenerator() {
           <Card className="bg-white/30 backdrop-blur-md shadow-xl border border-white/20 rounded-2xl">
             <CardContent className="space-y-4 p-6 text-black">
               <h2 className="text-xl font-semibold">{masterDoc.title}</h2>
-              <p className="text-gray-800">{masterDoc.plot}</p>
+              <div className="space-y-6 text-left">
+  {Object.entries(masterDoc.plot).map(([episodeKey, episodeText]) => (
+    <div key={episodeKey} className="p-4 rounded-xl bg-white/60 shadow-md backdrop-blur-sm">
+      <h3 className="text-lg font-bold text-black mb-2 capitalize">{episodeKey.replace("_", " ")}</h3>
+      <p className="text-gray-800 whitespace-pre-line">{episodeText}</p>
+    </div>
+  ))}
+</div>
+
               <div className="flex gap-4 mt-4 justify-center">
               <Button
                 className="px-6 py-3 rounded-lg bg-white/10 text-white font-semibold shadow-md border border-white/30 backdrop-blur-md 

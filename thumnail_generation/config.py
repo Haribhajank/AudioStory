@@ -16,4 +16,4 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 ROOT_DIR = SCRIPT_DIR.parent
 MASTER_DOC_PATH = ROOT_DIR / "audio_story_project/data/master_doc.json"
 
-N_PROMPTS = 2
+N_PROMPTS = 10
