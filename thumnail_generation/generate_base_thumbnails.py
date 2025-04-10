@@ -23,6 +23,23 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 client = OpenAI(api_key=config.OPENAI_API_KEY)
 client_gemini = genai.Client(api_key=config.GEMINI_API_KEY)
 
+# def clear_previous_thumnails():
+#     for file in OUTPUT_DIR.glob("*.png"):
+#         try:
+#             file.unlink()
+#             print(f"[✓] Deleted file: {file}")
+#         except Exception as e:
+#             print(f"[!] Error deleting file: {e}")
+
+def clear_previous_cache():
+    if CACHE_PATH.exists():
+        try:
+            CACHE_PATH.unlink()
+            print(f"[✓] Deleted cache: {CACHE_PATH}")
+        except Exception as e:
+            print(f"[!] Error deleting cache: {e}")
+
+
 def story_prompts(system_prompt, user_prompt, model="gpt-4o"):
     messages = [
         {"role": "developer", "content": system_prompt},
@@ -116,10 +133,6 @@ def generate_base_thumbnails():
     #     print(f"[!] Failed to parse JSON: {e}")
     #     return
 
-    # # Save prompt JSON
-    # with open(CACHE_PATH, "w", encoding="utf-8") as f:
-    #     json.dump(prompt_data, f, indent=2)
-    #     print(f"[✓] Saved prompt cache: {CACHE_PATH}")
 
     prompt_data = {
   "prompt_1": "A high-quality digital painting illustration in storybook fantasy style, showing young Liana standing in a field of lavender, gazing at a purple sky filled with glowing spirits in a dreamlike twilight meadow with distant village rooftops and faint moonlight with lit by soft purple twilight and gentle glowing orbs. The scene feels mystical and hopeful. The title text \"When the Night Finally Speaks\" is written in ornate serif font with glowing silver letters at the top center, and the author name \"KUKU FM\" appears in small, handwritten-style font in pale white at the bottom right.",
@@ -133,6 +146,13 @@ def generate_base_thumbnails():
   "prompt_9": "A high-quality digital painting with ink outlines illustration in storybook interior illustration style, showing Liana looking out the window as the purple sky flickers in the night in her small bedroom dimly lit by lantern glow with dim golden lantern light and flickers of purple from outside. The scene feels curious and dreamy. The title text \"When the Night Finally Speaks\" is written in storybook serif font in gold at the bottom center, and the author name \"KUKU FM\" appears in italic serif in pale orange at the top right.",
   "prompt_10": "A high-quality digital illustration in painted texture illustration in hopeful storybook realism style, showing a final sunrise over Rosemoor as villagers awaken from dreams for the first time in village rooftops glowing with morning light and drifting spirit motes with warm sunrise glow. The scene feels peaceful and joyous. The title text \"When the Night Finally Speaks\" is written in classic serif in white and gold gradient at the top center, and the author name \"KUKU FM\" appears in clean sans-serif in soft grey at the bottom center."
 }
+    # Save prompt JSON
+    clear_previous_cache()
+    with open(CACHE_PATH, "w", encoding="utf-8") as f:
+        json.dump(prompt_data, f, indent=2)
+        print(f"[✓] Saved prompt cache: {CACHE_PATH}")
+
+    
 
     # Generate images from prompts
     for i in range(1, config.N_PROMPTS + 1):

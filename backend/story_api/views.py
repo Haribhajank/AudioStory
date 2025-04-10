@@ -20,6 +20,7 @@ from pathlib import Path
 import traceback
 from django.conf import settings
 import logging
+from django.core.cache import cache
 
 logger = logging.getLogger(__name__)
 
@@ -65,6 +66,7 @@ def generate_story(request):
 
 @api_view(['POST'])
 def generate_episodes(request):
+    cache.clear()  # Clear the cache to ensure fresh data
     try:
         serializer = EpisodeInputSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
@@ -133,6 +135,7 @@ def generate_episodes(request):
 
 # @api_view(['POST'])
 # def generate_thumbnails(request):
+#     cache.clear()  # Clear the cache to ensure fresh data
 #     script_path = settings.BASE_DIR.parent / 'thumnail_generation/generate_base_thumbnails.py'
 #     output_folder = settings.BASE_DIR.parent / 'thumnail_generation/output/thumbnails'
 
@@ -173,6 +176,8 @@ def generate_episodes(request):
 
 @api_view(['POST'])
 def generate_thumbnails(request):
+    cache.clear()  # Clear the cache to ensure fresh data
+
     output_folder = BASE_DIR.parent / 'thumnail_generation/output/thumbnails'
     thumbnails = []
 
@@ -212,6 +217,7 @@ def generate_thumbnails(request):
 
 # @api_view(['POST'])
 # def generate_final_image(request):
+#     cache.clear()  # Clear the cache to ensure fresh data
 #     serializer = FinalImageInputSerializer(data=request.data)
 #     if serializer.is_valid():
 #         index = serializer.validated_data['prompt_index']
@@ -261,6 +267,7 @@ def generate_final_image(request):
 
 # @api_view(['POST'])
 # def generate_audio(request):
+#     cache.clear()  # Clear the cache to ensure fresh data
 #     serializer = AudioInputSerializer(data=request.data)
 #     if serializer.is_valid():
 #         try:
@@ -306,6 +313,7 @@ def generate_final_image(request):
 
 @api_view(['POST'])
 def generate_audio(request):
+    cache.clear()  # Clear the cache to ensure fresh data
     serializer = AudioInputSerializer(data=request.data)
     if serializer.is_valid():
         try:
