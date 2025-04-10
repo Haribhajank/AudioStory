@@ -51,7 +51,17 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from scripts.utils import load_json, save_json
 
+EPISODE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../data/episodes"))
 
+def clear_previous_episodes():
+    if os.path.exists(EPISODE_DIR):
+        for f in os.listdir(EPISODE_DIR):
+            if f.endswith(".json"):
+                os.remove(os.path.join(EPISODE_DIR, f))
+        print(f"Cleared previous episodes in {EPISODE_DIR}")
+    else:
+        os.makedirs(EPISODE_DIR)
+        print(f"Created episodes directory: {EPISODE_DIR}")
 
 load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
@@ -158,9 +168,11 @@ if __name__ == "__main__":
         num_eps = int(sys.argv[1])
     except:
         num_eps = 3  # fallback if not provided
+    print(f"Generating {num_eps} episodes...")
 
-    for i in range(1, num_eps + 1):
-        generate_episode(i)
+    clear_previous_episodes()
+
+    generate_episode(num_eps+1)
 
 
 

@@ -33,14 +33,16 @@ def generate_story(request):
     serializer = IdeaInputSerializer(data=request.data)
     if serializer.is_valid():
         idea = serializer.validated_data['idea']
+        numEpisodes = serializer.validated_data["numEpisodes"]
+        timePerEpisode = serializer.validated_data["timePerEpisode"]
+        genre = serializer.validated_data["genre"]
         script_path = BASE_DIR.parent / 'audio_story_project/scripts/generate_master_doc.py'
         
-        time.sleep(20)
 
         # 🔽 Print what's running
-        print("Running:", ['python', str(script_path), idea])
+        print("Running:", ['python', str(script_path), idea, numEpisodes, timePerEpisode, genre])
 
-        result = subprocess.run(['python', str(script_path), idea], capture_output=True, text=True)
+        result = subprocess.run(['python', str(script_path), idea, numEpisodes, timePerEpisode, genre], capture_output=True, text=True)
 
         # 🔽 Show the output and error (critical!)
         print("stdout:", result.stdout) 
@@ -64,11 +66,14 @@ def generate_story(request):
 @api_view(['POST'])
 def generate_episodes(request):
     try:
+        serializer = EpisodeInputSerializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            ep_index = serializer.validated_data["index"]
         script_path = BASE_DIR.parent / 'audio_story_project/scripts/generate_episode.py'
-        print("▶️ Running:", ['python', str(script_path), "3"])
-        time.sleep(20)
+        print("▶️ Running:", ['python', str(script_path), ep_index])
+        
 
-        result = subprocess.run(['python', str(script_path), "3"], capture_output=True, text=True)
+        result = subprocess.run(['python', str(script_path), ep_index], capture_output=True, text=True)
         print("📤 stdout:", result.stdout)
         print("📥 stderr:", result.stderr)
 
@@ -82,7 +87,9 @@ def generate_episodes(request):
                     with open(output_folder / filename) as f:
                         episodes.append(json.load(f))
             print(f"✅ {len(episodes)} episodes loaded")
-            return Response({"episodes": episodes})
+            script_url = f"/episodes/episode_{int(ep_index)+1}.json"
+            return Response({"script_url": script_url})
+
 
         print("❌ Episode folder does not exist")
         return Response({"error": "Episodes not found."}, status=500)
@@ -169,8 +176,7 @@ def generate_thumbnails(request):
     output_folder = BASE_DIR.parent / 'thumnail_generation/output/thumbnails'
     thumbnails = []
 
-    time.sleep(20)
-
+    
     if output_folder.exists():
         for filename in sorted(os.listdir(output_folder)):
             if filename.endswith(".png") and not filename.startswith("story_thumbnail"):
@@ -246,7 +252,7 @@ def generate_thumbnails(request):
 @api_view(['POST'])
 def generate_final_image(request):
     final_image_path = BASE_DIR.parent / 'thumnail_generation/output/thumbnails/story_thumbnail.png'
-    time.sleep(20)
+
     if final_image_path.exists():
         return Response({"image": "/media/thumbnails/story_thumbnail.png"})
     
@@ -308,7 +314,7 @@ def generate_audio(request):
             # 🎯 Use a fixed dummy script_id to point to an existing file
             dummy_script_id = "a2f7e49e"
             output_path = BASE_DIR.parent / f"AudioGeneration/output/episode_{dummy_script_id}.wav"
-            time.sleep(20)
+          
 
             print(f"[DEV MODE] Skipping audio generation. Looking for: {output_path}")
 

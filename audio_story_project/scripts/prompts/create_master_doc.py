@@ -46,7 +46,7 @@ Now, using all these guidelines, generate the complete story JSON."""
 
 user_story_prompt = """
 Idea/Trope/Plot: %s
-Episode Number: %d
+Episode Number: %s
 Time per Episode: %s
 Genre: %s
 

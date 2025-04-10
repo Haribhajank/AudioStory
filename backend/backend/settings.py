@@ -26,6 +26,11 @@ MEDIA_ROOT = BASE_DIR.parent / 'thumnail_generation/output'
 AUDIO_URL = '/audio/'  # ✅ not /media/audio/
 AUDIO_ROOT = Path(BASE_DIR.parent) / 'AudioGeneration' / 'output'
 
+
+EPISODE_URL = '/episodes/'  # ✅ not /media/episodes/
+EPISODE_DIR = Path(BASE_DIR.parent) / 'audio_story_project' / 'data' / 'episodes'
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 

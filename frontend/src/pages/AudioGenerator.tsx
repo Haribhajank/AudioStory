@@ -40,67 +40,71 @@ export default function AudioGenerator() {
 
   return (
     <div className="relative h-screen w-screen overflow-hidden">
-    {/* Background Image */}
-    <img
-      src="/audio.png"
-      alt="Narrated visual story background"
-      className="absolute inset-0 w-full h-full object-cover"
-    />
-    <div className="relative z-10 min-h-screen w-full px-4 py-12 flex justify-center items-start">
-      <div className="w-full max-w-4xl">
-        <h2 className="text-4xl font-bold text-center text-gray-800 mb-10 flex items-center justify-center gap-2">
-          <MusicIcon className="w-7 h-7 text-indigo-600" /> Generate Audio for Episodes
-        </h2>
+  {/* Background Image */}
+  <img
+    src="/audio.png"
+    alt="Narrated visual story background"
+    className="absolute inset-0 w-full h-full object-cover"
+  />
 
-        {episodes.length === 0 ? (
-          <p className="text-center text-gray-600 text-lg">No episodes found.</p>
-        ) : (
-          <div className="space-y-6">
-            {episodes.map((_, index) => (
-              <Card
-                key={index}
-                className="bg-white/80 backdrop-blur-sm opacity-90 border border-white/40 shadow-md rounded-xl"
-              >
-                <CardContent className="p-6 space-y-4">
-                  <h3 className="text-xl font-semibold text-gray-800">
-                    🎙️ Episode {index + 1}
-                  </h3>
+  {/* Scrollable Foreground Content */}
+  <div className="relative z-10 h-full w-full overflow-y-auto px-4 py-12 flex justify-center items-start">
+    <div className="w-full max-w-4xl">
+      <h2 className="text-4xl font-bold text-center text-gray-800 mb-10 flex items-center justify-center gap-2">
+        <MusicIcon className="w-7 h-7 text-indigo-600" /> Generate Audio for Episodes
+      </h2>
 
-                  {!audioLinks[index] ? (
-                    <Button
-                      onClick={() => generateAudio(index)}
-                      disabled={generating[index]}
-                      className={`px-5 py-2 font-semibold rounded-md shadow-md transition-all ${
-                        generating[index]
-                          ? "bg-gray-300 text-gray-600 cursor-not-allowed animate-pulse"
-                          : "bg-gradient-to-br from-indigo-500 to-purple-500 text-white hover:from-indigo-600 hover:to-purple-600"
-                      }`}
+      {episodes.length === 0 ? (
+        <p className="text-center text-gray-600 text-lg">No episodes found.</p>
+      ) : (
+        <div className="space-y-6">
+          {episodes.map((_, index) => (
+            <Card
+              key={index}
+              className="bg-white/80 backdrop-blur-sm opacity-90 border border-white/40 shadow-md rounded-xl"
+            >
+              <CardContent className="p-6 space-y-4">
+                <h3 className="text-xl font-semibold text-gray-800">
+                  🎙️ Episode {index + 1}
+                </h3>
+
+                {!audioLinks[index] ? (
+                  <Button
+                    onClick={() => generateAudio(index)}
+                    disabled={generating[index]}
+                    className={`px-5 py-2 font-semibold rounded-md shadow-md transition-all ${
+                      generating[index]
+                        ? "bg-gray-300 text-gray-600 cursor-not-allowed animate-pulse"
+                        : "bg-gradient-to-br from-indigo-500 to-purple-500 text-white hover:from-indigo-600 hover:to-purple-600"
+                    }`}
+                  >
+                    {generating[index] ? "Generating..." : "Generate Audio"}
+                  </Button>
+                ) : (
+                  <div className="space-y-3">
+                    <audio
+                      controls
+                      src={`http://localhost:8000${audioLinks[index]}`}
+                      className="w-full rounded-lg"
+                    />
+                    <a
+                      href={`http://localhost:8000${audioLinks[index]}`}
+                      download={`Episode_${index + 1}.wav`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block text-blue-600 hover:underline"
                     >
-                      {generating[index] ? "Generating..." : "Generate Audio"}
-                    </Button>
-                  ) : (
-                    <div className="space-y-3">
-                      <audio
-                        controls
-                        src={`http://localhost:8000${audioLinks[index]}`}
-                        className="w-full rounded-lg"
-                      />
-                      <a
-                        href={`http://localhost:8000${audioLinks[index]}`}
-                        download={`Episode_${index + 1}.wav`}
-                        className="inline-block text-blue-600 hover:underline"
-                      >
-                        ⬇️ Download Audio
-                      </a>
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        )}
-      </div>
+                      ⬇️ Download Audio
+                    </a>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      )}
     </div>
-    </div>
+  </div>
+</div>
   );
 }

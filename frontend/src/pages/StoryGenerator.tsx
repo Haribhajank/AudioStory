@@ -138,6 +138,9 @@ export default function StoryGenerator() {
   const navigate = useNavigate();
 
   const idea = localStorage.getItem("idea");
+  const numEpisodes = localStorage.getItem("numEpisodes");
+  const timePerEpisode = localStorage.getItem("timePerEpisode");
+  const genre = localStorage.getItem("genre");
 
   const generateMasterDoc = async () => {
     if (!idea) return;
@@ -146,7 +149,7 @@ export default function StoryGenerator() {
     const res = await fetch("http://localhost:8000/api/story/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ idea }),
+      body: JSON.stringify({ idea, numEpisodes, timePerEpisode, genre }),
     });
 
     const data = await res.json();

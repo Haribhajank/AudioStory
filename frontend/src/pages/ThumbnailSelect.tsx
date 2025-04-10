@@ -77,17 +77,21 @@ export default function ThumbnailSelect() {
         {loading ? (
           <p className="text-center text-lg text-gray-600">✨ Generating thumbnails...</p>
         ) : !finalImageUrl && thumbnails.length > 0 ? (
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 justify-center">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center">
             {thumbnails.map((src, idx) => (
+              <div
+              key={idx}
+              onClick={() => setSelected(idx)}
+              className={`aspect-[1/1] w-full max-w-[220px] rounded-xl overflow-hidden border-4 cursor-pointer shadow-md transition-all duration-300 hover:scale-105 transform-gpu backface-hidden will-change-transform ${
+                selected === idx ? "border-blue-500 shadow-lg" : "border-transparent"
+              }`}
+            >
               <img
-                key={idx}
                 src={`${BASE_BACKEND_URL}${src}`}
                 alt={`Thumbnail ${idx + 1}`}
-                onClick={() => setSelected(idx)}
-                className={`rounded-xl cursor-pointer border-4 transition-all duration-300 shadow-md hover:scale-105 ${
-                  selected === idx ? "border-blue-500 shadow-lg" : "border-transparent"
-                }`}
+                className="w-full h-full object-cover"
               />
+            </div>            
             ))}
           </div>
         ) : null}
@@ -114,13 +118,15 @@ export default function ThumbnailSelect() {
               className="mx-auto rounded-xl border shadow-xl max-w-sm"
             />
             <div className="mt-6 space-y-4">
-              <a
-                href={`${finalImageUrl}?${Date.now()}`}
-                download="final_thumbnail.png"
-                className="inline-block text-blue-600 hover:underline font-medium"
-              >
-                ⬇️ Download Final Thumbnail
-              </a>
+            <a
+              href={`${finalImageUrl}?${Date.now()}`}
+              download="final_thumbnail.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block text-blue-600 hover:underline font-medium"
+            >
+              ⬇️ Download Final Thumbnail
+            </a>
               <div>
                 <Button
                   onClick={() => navigate("/audio")}

@@ -27,10 +27,11 @@ def normalize_master_doc(doc):
 
 
 
-def create_master_doc(idea, num_episodes):
+def create_master_doc(idea, num_episodes,time_per_episode,genre):
+    print(idea, num_episodes, time_per_episode, genre)
     messages = [
         {"role": "developer", "content": system_story_prompt},
-        {"role": "user", "content": user_story_prompt %(idea,num_episodes,"3-4 minutes","Fantasy")}
+        {"role": "user", "content": user_story_prompt % (idea, num_episodes, time_per_episode, genre)}
       ]
     print(" Using OpenAI key:", os.getenv("OPENAI_API_KEY"))
     # try:
@@ -152,5 +153,11 @@ def create_master_doc(idea, num_episodes):
 
 if __name__ == "__main__":
     idea = sys.argv[1]
+    numEpisodes = sys.argv[2]
+    timePerEpisode = sys.argv[3]
+    genre = sys.argv[4]
     print(f" CLI triggered with idea: {idea}")
-    create_master_doc(idea, num_episodes=2)
+    print(f" CLI triggered with numEpisodes: {numEpisodes}")
+    print(f" CLI triggered with timePerEpisode: {timePerEpisode}")
+    print(f" CLI triggered with genre: {genre}")
+    create_master_doc(idea, numEpisodes, timePerEpisode, genre)
