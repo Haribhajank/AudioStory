@@ -98,6 +98,20 @@
 #         print("[!] Missing prompt_key as argument (e.g., prompt_1)")
 #     else:
 #         generate_final_thumbnail(sys.argv[1])
+# def generate_final_thumbnail_dummy():
+#     response = client_gemini.models.generate_images(
+#             model="imagen-3.0-generate-002",
+#             prompt="A camera photograph showing Marlow Orley intercepting Eldon, Yara and Liana at the chapel gates. Marlow is clutching a lantern against the wind.",
+#             config=types.GenerateImagesConfig(
+#                 number_of_images=1,
+#                 aspect_ratio="1:1",
+#                 person_generation="ALLOW_ADULT"
+#             )
+#         )
+#     for generated_image in response.generated_images:
+#             image = Image.open(BytesIO(generated_image.image.image_bytes))
+#             save_thumbnail(generated_image.image.image_bytes, "story_thumbnail.png")
+#             print("[✓] Final image saved")
 
 
 
@@ -117,7 +131,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent
 SCRIPT_DIR = Path(__file__).resolve().parent
 OUTPUT_DIR = SCRIPT_DIR / "output" / "thumbnails"
-CACHE_PATH = BASE_DIR / "output" / "thumbnails" / "prompt_cache.json"
+CACHE_PATH = BASE_DIR / "output" / "prompt_cache.json"
 
 client_gemini = genai.Client(api_key=config.IMAGEN_API_KEY)
 
@@ -153,6 +167,8 @@ def generate_final_thumbnail(prompt_key):
             )
         )
 
+
+
         for generated_image in response.generated_images:
             image = Image.open(BytesIO(generated_image.image.image_bytes))
             save_thumbnail(generated_image.image.image_bytes, "story_thumbnail.png")
@@ -160,6 +176,7 @@ def generate_final_thumbnail(prompt_key):
 
     except Exception as e:
         print(f"[!] Final thumbnail generation error: {e}")
+
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:

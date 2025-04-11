@@ -44,8 +44,9 @@ import sys
 import os
 import json
 from dotenv import load_dotenv
-from prompts.generate_episode import episode_system_prompt,episode_user_prompt
-from prompts.generate_recap import recap_system_prompt,recap_user_prompt
+from google import genai
+from prompts.generate_episode import episode_system_prompt,episode_user_prompt,gemini_episode_prompt
+from prompts.generate_recap import recap_system_prompt,recap_user_prompt,gemini_recap_prompt
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
@@ -53,19 +54,36 @@ from scripts.utils import load_json, save_json
 
 EPISODE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../data/episodes"))
 
-def clear_previous_episodes():
-    if os.path.exists(EPISODE_DIR):
-        for f in os.listdir(EPISODE_DIR):
-            if f.endswith(".json"):
-                os.remove(os.path.join(EPISODE_DIR, f))
-        print(f"Cleared previous episodes in {EPISODE_DIR}")
-    else:
-        os.makedirs(EPISODE_DIR)
-        print(f"Created episodes directory: {EPISODE_DIR}")
+
 
 load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+client_gemini = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
+
+def gpt_request(prompt,model):
+    try:
+        response = client.chat.completions.create(
+            model=model,
+            messages=prompt
+        )
+        return response.choices[0].message.content.strip()
+    except Exception as e:
+        print("Error during OpenAI request:", e)
+        return None
+
+
+def gemini_request(prompt):
+    try:
+        response = client_gemini.models.generate_content(
+    model="gemini-2.0-flash-thinking-exp-01-21",
+    contents=prompt
+    )        
+        return response.text
+    except Exception as e:
+        print("Error during Gemini request:", e)
+        return None
+    
 
 def generate_episode(ep_num):
     print(f"\n Generating Episode {ep_num}...")
@@ -80,55 +98,61 @@ def generate_episode(ep_num):
         {"role": "user", "content": episode_user_prompt %(master,ep_num,ep_num)}
       ]
     
-    # res = client.chat.completions.create(
-    #         model="o1",
-    #         messages=messages,
-    #     )
+    res = gpt_request(messages,"o1")
+    if res is None:
+        print("Failed to get a response from OpenAI. Trying Gemini...")
+        messages = [gemini_episode_prompt % (master,ep_num,ep_num)]
+        res = gemini_request(messages)
+        if res is None:
+            print("Failed to get a response from both OpenAI and Gemini.")
+            return
 
-    # response = res.choices[0].message.content
-    # print(f"\n LLM Response for Episode {ep_num}:\n", response)
+    response = res
+    print(f"\n LLM Response for Episode {ep_num}:\n", response)
 
-    # try:
-    #     output = eval(response)
-    # except Exception as e:
-    #     print(" Failed to parse LLM output:", e)
-    #     return
+    try:
+        if "```" in response:
+            response = response.split("```")[1].replace("json", "").strip()
+        output = eval(response)
+    except Exception as e:
+        print(" Failed to parse LLM output:", e)
+        return
     
 
     
-    # episode_script = output
+    episode_script = output
 
     # Dummy
-    output = [
-  "Narrator: The sweltering heat of Manaus clings to the air as Martin Alvarez steps off the small plane, his wife Helena and their twelve-year-old son Lucas following close behind.",
-  "Martin Alvarez: Here we are, finally Manaus, Brazil. Never thought I'd see the Amazon with my own eyes.",
-  "Lucas Alvarez: Dad, did you hear those birds? They're so loud! I can't wait to see everything!",
-  "Helena Alvarez: The sounds, the smells— it's like coming home. I've missed this so much.",
-  "Narrator: Helena scans the busy terminal until a confident voice rises above the crowd.",
-  "Joana: Bom dia! You must be the Alvarez family. Welcome to Manaus, I'm Joana, your guide.",
-  "Helena Alvarez: So glad to finally meet you, Joana.",
-  "Joana: We have a bit of a drive ahead. Let's get you settled in my truck, then we'll head out of the city. The rainforest is waiting.",
-  "Narrator: The engine growls as they leave behind the urban sprawl, the canopy of lush green closing in around them. Cicadas and distant birdcalls underscore the family's awe.",
-  "Lucas Alvarez: Mom, is it true there's a lagoon that glows at night? Joana told me there's some kind of legend!",
-  "Joana: It's more than just a legend, menino. Many say this lagoon is protected by spirits of the forest, though few have ever seen them.",
-  "Martin Alvarez: Spirits, huh? Well, we'll see about that. I'm just excited for some family time off the grid.",
-  "Narrator: Evening settles as the group arrives at the edge of the lagoon, its surface dark and still. They pitch their tents, lantern light flickering against the towering trees.",
-  "Helena Alvarez: My aunt used to whisper stories about this place— She said if you listen closely, the lagoon speaks to you.",
-  "Martin Alvarez: Helena, I know how important this is for you, but let's stay cautious. We're in unfamiliar territory.",
-  "Narrator: The murky water glistens beneath the moon. Lucas paces the shore, eager for any sign of magic.",
-  "Lucas Alvarez: I don't see anything— Are we sure there's really something here?",
-  "Helena Alvarez: Lucas, wait— Did you hear that?",
-  "Narrator: A faint, melodic call seems to drift across the lagoon, carrying Helena's name in hushed tones. She steps closer, transfixed.",
-  "Joana: Helena, be careful. Legends say the forest will beckon those who carry its heritage— but no one knows what truly lies beneath.",
-  "Lucas Alvarez: Mom, come back. Please?",
-  "Narrator: Suddenly, a soft, ethereal glow dances upon the water's surface, gently illuminating the reeds. Helena's breath catches.",
-  "Martin Alvarez: Helena— what on earth—?",
-  "Narrator: The leaves rustle as an owl hoots in the distance. Nature feels startlingly alive, as though responding to the lagoon's light.",
-  "Joana: This, this might be the legend, coming to life.",
-  "Narrator: The radiance deepens, and in one electrifying instant, a low, resonant roar echoes from beneath the lagoon. The water churns with supernatural light, forcing them all to step back in awe, and trepidation."
-]
+#     output = [
+#   "Narrator: The sweltering heat of Manaus clings to the air as Martin Alvarez steps off the small plane, his wife Helena and their twelve-year-old son Lucas following close behind.",
+#   "Martin Alvarez: Here we are, finally Manaus, Brazil. Never thought I'd see the Amazon with my own eyes.",
+#   "Lucas Alvarez: Dad, did you hear those birds? They're so loud! I can't wait to see everything!",
+#   "Helena Alvarez: The sounds, the smells— it's like coming home. I've missed this so much.",
+#   "Narrator: Helena scans the busy terminal until a confident voice rises above the crowd.",
+#   "Joana: Bom dia! You must be the Alvarez family. Welcome to Manaus, I'm Joana, your guide.",
+#   "Helena Alvarez: So glad to finally meet you, Joana.",
+#   "Joana: We have a bit of a drive ahead. Let's get you settled in my truck, then we'll head out of the city. The rainforest is waiting.",
+#   "Narrator: The engine growls as they leave behind the urban sprawl, the canopy of lush green closing in around them. Cicadas and distant birdcalls underscore the family's awe.",
+#   "Lucas Alvarez: Mom, is it true there's a lagoon that glows at night? Joana told me there's some kind of legend!",
+#   "Joana: It's more than just a legend, menino. Many say this lagoon is protected by spirits of the forest, though few have ever seen them.",
+#   "Martin Alvarez: Spirits, huh? Well, we'll see about that. I'm just excited for some family time off the grid.",
+#   "Narrator: Evening settles as the group arrives at the edge of the lagoon, its surface dark and still. They pitch their tents, lantern light flickering against the towering trees.",
+#   "Helena Alvarez: My aunt used to whisper stories about this place— She said if you listen closely, the lagoon speaks to you.",
+#   "Martin Alvarez: Helena, I know how important this is for you, but let's stay cautious. We're in unfamiliar territory.",
+#   "Narrator: The murky water glistens beneath the moon. Lucas paces the shore, eager for any sign of magic.",
+#   "Lucas Alvarez: I don't see anything— Are we sure there's really something here?",
+#   "Helena Alvarez: Lucas, wait— Did you hear that?",
+#   "Narrator: A faint, melodic call seems to drift across the lagoon, carrying Helena's name in hushed tones. She steps closer, transfixed.",
+#   "Joana: Helena, be careful. Legends say the forest will beckon those who carry its heritage— but no one knows what truly lies beneath.",
+#   "Lucas Alvarez: Mom, come back. Please?",
+#   "Narrator: Suddenly, a soft, ethereal glow dances upon the water's surface, gently illuminating the reeds. Helena's breath catches.",
+#   "Martin Alvarez: Helena— what on earth—?",
+#   "Narrator: The leaves rustle as an owl hoots in the distance. Nature feels startlingly alive, as though responding to the lagoon's light.",
+#   "Joana: This, this might be the legend, coming to life.",
+#   "Narrator: The radiance deepens, and in one electrifying instant, a low, resonant roar echoes from beneath the lagoon. The water churns with supernatural light, forcing them all to step back in awe, and trepidation."
+# ]
 
-    episode_script = output
+#     episode_script = output
     # Save episode to JSON
     save_json(episode_script, episodes_path)
     print(f" Episode {ep_num} saved to:", episodes_path)
@@ -139,22 +163,26 @@ def generate_episode(ep_num):
         {"role": "user", "content": recap_user_prompt %(episode_script)}
       ]
     
-    # res = client.chat.completions.create(
-    #         model="o1",
-    #         messages=messages,
-    #     )
+    res = gpt_request(messages,"4o")
+    if res is None:
+        print("Failed to get a response from OpenAI. Trying Gemini...")
+        messages = [gemini_recap_prompt % (episode_script)]
+        res = gemini_request(messages)
+        if res is None:
+            print("Failed to get a response from both OpenAI and Gemini.")
+            return
 
-    # response = res.choices[0].message.content
-    # print(f"\n LLM Response for Recap {ep_num}:\n", response)
+    response = res
+    print(f"\n LLM Response for Recap {ep_num}:\n", response)
 
-    # if "```" in response:
-    #     response = response.split("```")[1].replace("json", "").strip()
+    if "```" in response:
+        response = response.split("```")[1].replace("json", "").strip()
     
-    # response_json = json.loads(response)
-    # episode_recap = response_json["episode_recap_summary"]
-    # master["recap"] = episode_recap
-    # save_json(master, master_path)
-    # print(f"\n Master doc updated with recap of {ep_num}")
+    response_json = json.loads(response)
+    episode_recap = response_json["episode_recap_summary"]
+    master["recap"] = episode_recap
+    save_json(master, master_path)
+    print(f"\n Master doc updated with recap of {ep_num}")
 
     
 
@@ -169,8 +197,6 @@ if __name__ == "__main__":
     except:
         num_eps = 3  # fallback if not provided
     print(f"Generating {num_eps} episodes...")
-
-    clear_previous_episodes()
 
     generate_episode(num_eps+1)
 

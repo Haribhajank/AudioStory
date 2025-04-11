@@ -9,9 +9,9 @@ export default function AudioGenerator() {
   const [generating, setGenerating] = useState<{ [key: number]: boolean }>({});
 
   useEffect(() => {
-    const savedEpisodes = JSON.parse(localStorage.getItem("episodes") || "[]");
-    setEpisodes(savedEpisodes);
-  }, []);
+      const numEpisodes = parseInt(localStorage.getItem("numEpisodes") || "0");
+      setEpisodes(new Array(numEpisodes).fill(null));
+    }, []);
 
   const generateAudio = async (index: number) => {
     setGenerating((prev) => ({ ...prev, [index]: true }));

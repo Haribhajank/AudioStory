@@ -11,6 +11,7 @@ export default function ThumbnailSelect() {
   const [selected, setSelected] = useState<number | null>(null);
   const [loading, setLoading] = useState(false);
   const [finalImageUrl, setFinalImageUrl] = useState<string | null>(null);
+  const [finalImageError, setFinalImageError] = useState<string | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -79,19 +80,22 @@ export default function ThumbnailSelect() {
         ) : !finalImageUrl && thumbnails.length > 0 ? (
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center">
             {thumbnails.map((src, idx) => (
-              <div
-              key={idx}
-              onClick={() => setSelected(idx)}
-              className={`aspect-[1/1] w-full max-w-[220px] rounded-xl overflow-hidden border-4 cursor-pointer shadow-md transition-all duration-300 hover:scale-105 transform-gpu backface-hidden will-change-transform ${
-                selected === idx ? "border-blue-500 shadow-lg" : "border-transparent"
-              }`}
-            >
-              <img
-                src={`${BASE_BACKEND_URL}${src}`}
-                alt={`Thumbnail ${idx + 1}`}
-                className="w-full h-full object-cover"
-              />
-            </div>            
+             <div
+             key={idx}
+             onClick={() => setSelected(idx)}
+             className={`relative aspect-[1/1] w-full max-w-[220px] rounded-xl overflow-hidden border-4 cursor-pointer shadow-md transition-all duration-300 transform-gpu ${
+               selected === idx ? "border-blue-500 shadow-lg" : "border-transparent"
+             }`}
+           >
+             <img
+               src={`${BASE_BACKEND_URL}${src}?t=${Date.now()}`}
+               alt={`Thumbnail ${idx + 1}`}
+               className="w-full h-full object-cover"
+             />
+             <div className="absolute inset-0 bg-black/50 opacity-0 hover:opacity-100 flex items-center justify-center text-white text-sm font-medium transition-opacity">
+               Click to select
+             </div>
+           </div>                       
             ))}
           </div>
         ) : null}
@@ -113,10 +117,11 @@ export default function ThumbnailSelect() {
           <div className="mt-12 text-center">
             <h3 className="text-2xl font-semibold mb-4">🎉 Final Thumbnail</h3>
             <img
-              src={`${finalImageUrl}?${Date.now()}`}
-              alt="Final Thumbnail"
-              className="mx-auto rounded-xl border shadow-xl max-w-sm"
-            />
+  src={`${finalImageUrl}?${Date.now()}`}
+  alt="Final Thumbnail"
+  className="mx-auto rounded-xl border shadow-xl max-w-sm"
+  onError={() => setFinalImageError("⚠️ Content Security Restriction")}
+/>
             <div className="mt-6 space-y-4">
             <a
               href={`${finalImageUrl}?${Date.now()}`}
@@ -138,6 +143,11 @@ export default function ThumbnailSelect() {
             </div>
           </div>
         )}
+        {finalImageError && (
+  <div className="mt-6 text-center text-red-500 font-medium text-lg">
+    {finalImageError}
+  </div>
+)}
       </div>
     </div>
   </div>

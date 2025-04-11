@@ -11,8 +11,8 @@ export default function EpisodeScripts() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const savedEpisodes = JSON.parse(localStorage.getItem("episodes") || "[]");
-    setEpisodes(savedEpisodes);
+    const numEpisodes = parseInt(localStorage.getItem("numEpisodes") || "0");
+    setEpisodes(new Array(numEpisodes).fill(null));
   }, []);
 
   const generateScript = async (index: number) => {

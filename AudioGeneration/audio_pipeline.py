@@ -9,8 +9,8 @@ from typing import List, Dict
 from pydub import AudioSegment
 from dotenv import load_dotenv
 import time
-
-from smallest import Smallest
+from google import genai
+from smallestai.waves import WavesClient
 from langdetect import detect
 from indic_transliteration.sanscript import transliterate, ITRANS, DEVANAGARI
 from openai import OpenAI
@@ -31,7 +31,8 @@ CHUNK_ROOT.mkdir(parents=True, exist_ok=True)
 # Load environment
 load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-client_sai = Smallest(api_key=os.getenv("SMALLEST_API_KEY"))
+client_gemini = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+client_sai = WavesClient(api_key=os.getenv("SMALLEST_API_KEY"))
 
 # Logging setup
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
@@ -87,9 +88,18 @@ def infer_emotion(text: str) -> str:
             max_tokens=5
         )
         return response.choices[0].message.content.strip().lower()
-    except Exception as e:
-        logging.warning(f"Emotion detection failed: {e}")
-        return "neutral"
+    
+    except:
+        try:
+            response = client_gemini.models.generate_content(
+                model="gemini-2.0-flash",
+                contents=[f'What is the primary emotion in: "{text}"? Respond with one word.']
+                )
+            return response.text.strip().lower()
+        
+        except Exception as e:
+            logging.warning(f"Emotion detection failed: {e}")
+            return "neutral"
 
 def detect_character_language(character_name: str, script: List[Dict]) -> str:
     texts = [line["text"] for line in script if line.get("speaker", "").lower() == character_name.lower()]
