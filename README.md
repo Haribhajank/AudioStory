@@ -112,7 +112,6 @@ python main.py --idea "a sci-fi story about time-travelers who manipulate memori
 - Sudhanshu Kumar (Developed Audio Story Pipeline)
 - Ayush Mothiya (Image Generation Pipeline)
 - Haribhajan Kushwaha (Backend & Voice Automation)
-- [Add other teammates]
 
 ---
 
