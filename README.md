@@ -18,7 +18,7 @@ All pipelines are modular, efficient, and designed for quality and scalability.
 
 ## 🧐 Architecture
 
-![Architecture Diagram](./frontend/src/assets/arc.png)
+![Architecture Diagram](./frontend/src/assets/arc.jpeg)
 
 
 ---
