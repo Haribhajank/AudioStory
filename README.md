@@ -1,6 +1,6 @@
 # 🎧 AutoStory: AI-Powered Audio Storytelling Engine
 
-Welcome to **AutoStory**, an end-to-end AI-driven pipeline that transforms a simple idea into an immersive audio experience — complete with plot, character-driven narration, and visually rich thumbnails. Developed during the **K by KukuFM Hackathon** by **Team TeanRusk**, this project automates the storytelling process from input to final audio output.
+Welcome to **AutoStory**, an end-to-end AI-driven pipeline that transforms a simple idea into an immersive audio experience — complete with plot, character-driven narration, and visually rich thumbnails. Developed during the **KukuFM Hackathon** by **Team TeanRusk - (Ayush Mothiya, Sudhanshu Kumar, Haribhajan)**, this project automates the storytelling process from input to final audio output.
 
 ---
 
@@ -109,6 +109,8 @@ python main.py --idea "a sci-fi story about time-travelers who manipulate memori
 
 ## 🧑‍💻 Team TeanRusk
 
+- Sudhanshu Kumar (Developed Audio Story Pipeline)
+- Ayush Mothiya (Image Generation Pipeline)
 - Haribhajan Kushwaha (Backend & Voice Automation)
 - [Add other teammates]
 
