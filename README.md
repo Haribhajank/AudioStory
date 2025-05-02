@@ -18,17 +18,8 @@ All pipelines are modular, efficient, and designed for quality and scalability.
 
 ## 🧐 Architecture
 
-```mermaid
-flowchart LR
-  A[Input (Trope, Idea, Plot)] --> B[LLM - Master Doc]
-  B --> C[Episodes (Narration + Dialogue)]
-  C --> D[Audio Doc: Voice Profiles, Themes]
-  B --> E[Prompt Generator]
-  E --> F[Stable Diffusion / Imagen 3]
-  F --> G[Thumbnail Generation]
-  D --> H[Smallest.AI Voice API]
-  H --> I[Final Audio Story]
-```
+![Architecture Diagram](./frontend/src/assets/arc.png)
+
 
 ---
 
