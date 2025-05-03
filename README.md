@@ -51,7 +51,7 @@ All pipelines are modular, efficient, and designed for quality and scalability.
 | Image Gen        | Google Gemini API, Imagen 3                    |
 | Prompt Handling  | Python, Custom Heuristics                      |
 | Voice Matching   | Custom scoring system                          |
-| Output Formats   | `.mp3` for audio, `.jpg` for thumbnails, `.pdf` for scripts |
+| Output Formats   | `.wav` for audio, `.jpg` for thumbnails, `.pdf` for scripts |
 
 ---
 
@@ -109,7 +109,7 @@ python main.py --idea "a sci-fi story about time-travelers who manipulate memori
 
 ## 🧑‍💻 Team TeanRusk
 
-- Sudhanshu Kumar (Developed Audio Story Pipeline)
+- Sudhanshu Kumar (Developed Story Generation Pipeline)
 - Ayush Mothiya (Image Generation Pipeline)
 - Haribhajan Kushwaha (Backend & Voice Automation)
 
